@@ -3,11 +3,15 @@
 @tailwind utilities;
 
 /* Viewport Scaling - Fixed Aspect Ratio (16:9 - 1920x1080) */
+/* Precise percentage-based scaling for all screen resolutions */
 :root {
   --viewport-scale: 1;
+  --scale-percentage: 100%;
   --design-width: 1920;
   --design-height: 1080;
   --pixel-ratio: 1;
+  --viewport-width: 100vw;
+  --viewport-height: 100vh;
 }
 
 /* Reset body and html to remove scrollbars and margins */
@@ -30,22 +34,36 @@ html, body {
   background-color: #000;
 }
 
-/* Viewport fit container - scales entire app as a unit */
+/* Viewport fit container - scales entire app as a unit with precise percentage calculation */
 .viewport-fit-container {
+  /* Fixed design dimensions - always 1920x1080 */
   width: calc(var(--design-width) * 1px);
   height: calc(var(--design-height) * 1px);
+  
+  /* Precise percentage-based scaling transform */
+  /* Scale calculated as: min(viewportWidth/1920, viewportHeight/1080) */
   transform: scale(var(--viewport-scale));
   transform-origin: center center;
+  
+  /* Positioning and overflow */
   overflow: visible;
   position: relative;
   background-color: #fff;
+  
   /* GPU acceleration for smoother scaling */
   will-change: transform;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  /* High-quality image rendering during scaling */
+  
+  /* High-quality image rendering - prevents pixelation */
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
+  
+  /* Maintain box sizing for consistent layout */
+  box-sizing: border-box;
+  
+  /* Smooth transitions when scale changes */
+  transition: transform 0.1s ease-out;
 }
 
 /* Image Rendering Optimization - Prevent quality loss on mobile */

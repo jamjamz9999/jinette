@@ -476,41 +476,61 @@ const App = () => {
   const [showAdminLogin, setShowAdminLogin] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Viewport scaling resize handler with optimizations for image rendering
+  // Viewport scaling resize handler - precise percentage-based calculation
   useEffect(() => {
     const updateScale = () => {
+      // Design dimensions (reference resolution for 16:9 aspect ratio)
       const designWidth = 1920;
       const designHeight = 1080;
+      
+      // Get actual viewport dimensions
       const viewportWidth = window.innerWidth;
       const viewportHeight = window.innerHeight;
       
-      // Calculate scale to fit viewport while maintaining aspect ratio
+      // Calculate scale percentages for both dimensions
       const scaleX = viewportWidth / designWidth;
       const scaleY = viewportHeight / designHeight;
+      
+      // Use minimum scale to ensure content always fits without cropping
+      // This maintains aspect ratio and prevents any layout shifts
       const scale = Math.min(scaleX, scaleY);
       
-      // Update CSS variable
-      document.documentElement.style.setProperty('--viewport-scale', scale);
+      // Calculate percentage for debugging (scale * 100 = percentage)
+      const scalePercentage = (scale * 100).toFixed(2);
+      
+      // Update CSS variables with precise scale value
+      document.documentElement.style.setProperty('--viewport-scale', scale.toString());
+      document.documentElement.style.setProperty('--scale-percentage', scalePercentage + '%');
       
       // Set pixel ratio for high-DPI displays (Retina, etc.)
       const pixelRatio = window.devicePixelRatio || 1;
-      document.documentElement.style.setProperty('--pixel-ratio', pixelRatio);
+      document.documentElement.style.setProperty('--pixel-ratio', pixelRatio.toString());
+      
+      // Store viewport dimensions for reference
+      document.documentElement.style.setProperty('--viewport-width', viewportWidth + 'px');
+      document.documentElement.style.setProperty('--viewport-height', viewportHeight + 'px');
     };
+
+    // Immediate update on mount for instant scaling
+    updateScale();
 
     // Debounce resize for better performance
     let resizeTimeout;
     const debouncedUpdateScale = () => {
       clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(updateScale, 16); // ~60fps
+      resizeTimeout = setTimeout(updateScale, 10); // Faster response time
     };
 
-    // Initial scale
-    updateScale();
-
-    // Update on resize with debounce for smoother performance
+    // Update on resize with debounce
     window.addEventListener('resize', debouncedUpdateScale);
-    // Update on orientation change (mobile)
+    // Update on orientation change (mobile) - immediate
     window.addEventListener('orientationchange', updateScale);
+    // Update when page becomes visible (handles mobile browser edge cases)
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') {
+        updateScale();
+      }
+    });
     
     // Cleanup
     return () => {
