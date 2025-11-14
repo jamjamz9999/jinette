@@ -615,30 +615,6 @@ Successful photographers use social media strategically, sharing work that repre
           </section>
         )}
 
-        {/* Newsletter CTA */}
-        {currentPage === 1 && (
-          <section className="mt-20 bg-gray-50 rounded-2xl px-8 py-12 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-black mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Stay Updated
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
-              Receive field notes, lighting breakdowns, and photography insights delivered to your inbox.
-            </p>
-            <form className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Your email address"
-                className="w-full sm:flex-1 rounded-lg border border-gray-300 px-5 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-black bg-white"
-              />
-              <button
-                type="submit"
-                className="w-full sm:w-auto rounded-lg bg-black px-6 py-3 text-sm font-semibold text-white hover:bg-gray-900 transition-colors"
-              >
-                Subscribe
-              </button>
-            </form>
-          </section>
-        )}
       </main>
     </div>
   );

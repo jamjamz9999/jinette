@@ -11,42 +11,15 @@ const PhotographyPage = ({ onImageClick, isAdmin = false }) => {
   });
 
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [showAllPhotos, setShowAllPhotos] = useState(false);
 
-  // Shuffle function
-  const shuffleArray = (array) => {
-    const shuffled = [...array];
-    for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    return shuffled;
-  };
-
-  // Memoize random photos to maintain consistent randomization across renders
-  const randomPhotosSet = useMemo(() => {
-    const allPhotos = selectedCategory === 'All'
-      ? GALLERY_PHOTOS
-      : GALLERY_PHOTOS.filter((photo) => photo.category === selectedCategory);
-    return shuffleArray(allPhotos).slice(0, 12);
-  }, [selectedCategory]);
-
-  const filteredPhotos = showAllPhotos 
-    ? (selectedCategory === 'All'
-        ? GALLERY_PHOTOS
-        : GALLERY_PHOTOS.filter((photo) => photo.category === selectedCategory))
-    : randomPhotosSet;
+  const filteredPhotos = selectedCategory === 'All'
+    ? GALLERY_PHOTOS
+    : GALLERY_PHOTOS.filter((photo) => photo.category === selectedCategory);
 
   const handleImageClick = (photoId) => {
     if (onImageClick) {
       onImageClick(photoId);
     }
-  };
-
-  // Reset showAllPhotos when category changes
-  const handleCategoryChange = (category) => {
-    setSelectedCategory(category);
-    setShowAllPhotos(false);
   };
 
   return (
@@ -69,7 +42,7 @@ const PhotographyPage = ({ onImageClick, isAdmin = false }) => {
           {availableCategories.filter(category => category && category.trim() !== '').map((category) => (
             <button
               key={category}
-              onClick={() => handleCategoryChange(category)}
+              onClick={() => setSelectedCategory(category)}
               className={`px-6 py-3 font-semibold transition-all duration-300 capitalize ${
                 selectedCategory === category
                   ? 'bg-gradient-to-r from-gray-200 to-gray-300 text-black scale-105'
@@ -80,35 +53,6 @@ const PhotographyPage = ({ onImageClick, isAdmin = false }) => {
             </button>
           ))}
         </div>
-
-        {/* Show All / Show 12 Toggle Button */}
-        {selectedCategory === 'All' && GALLERY_PHOTOS.length > 12 ? (
-          <div className="flex justify-center mb-8">
-            <button
-              onClick={() => setShowAllPhotos(!showAllPhotos)}
-              className={`px-8 py-3 font-semibold transition-all duration-300 rounded-lg ${
-                showAllPhotos
-                  ? 'bg-black text-white hover:bg-gray-800'
-                  : 'bg-gradient-to-r from-gray-200 to-gray-300 text-black hover:from-gray-300 hover:to-gray-400'
-              }`}
-            >
-              {showAllPhotos ? 'Show 12 Featured' : 'View All'}
-            </button>
-          </div>
-        ) : selectedCategory !== 'All' && GALLERY_PHOTOS.filter(p => p.category === selectedCategory).length > 12 ? (
-          <div className="flex justify-center mb-8">
-            <button
-              onClick={() => setShowAllPhotos(!showAllPhotos)}
-              className={`px-8 py-3 font-semibold transition-all duration-300 rounded-lg ${
-                showAllPhotos
-                  ? 'bg-black text-white hover:bg-gray-800'
-                  : 'bg-gradient-to-r from-gray-200 to-gray-300 text-black hover:from-gray-300 hover:to-gray-400'
-              }`}
-            >
-              {showAllPhotos ? 'Show 12 Featured' : 'View All'}
-            </button>
-          </div>
-        ) : null}
 
         {/* Gallery Grid — masonry layout with hover info overlays */}
         {filteredPhotos.length > 0 ? (
