@@ -37,7 +37,7 @@ const StudioPage = () => {
               <div className="rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 bg-white">
                 <div className="relative h-96 overflow-hidden">
                   <img
-                    src="/images/studio-main.svg"
+                    src={new URL('/images/studio-main.svg', import.meta.url).href}
                     alt="Main studio"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
@@ -56,7 +56,7 @@ const StudioPage = () => {
               <div className="rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 bg-white">
                 <div className="relative h-96 overflow-hidden">
                   <img
-                    src="/images/studio-outdoor.svg"
+                    src={new URL('/images/studio-outdoor.svg', import.meta.url).href}
                     alt="Natural light studio"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
