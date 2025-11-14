@@ -1,4 +1,4 @@
-import { getGalleryImageMap } from '../scripts/import-gallery.js';
+import { getGalleryImageMap } from './scripts/import-gallery.js';
 
 export const NAV_LINKS = [
   { path: '/', title: 'Home' },
