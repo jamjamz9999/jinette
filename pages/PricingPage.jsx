@@ -3,6 +3,17 @@ import React from 'react';
 const PricingPage = () => {
   const pricingPackages = [
     {
+      name: 'The Mini Story Session',
+      price: '$350',
+      duration: 'Starting at',
+      description: 'Ideal for quick updates or seasonal moments — perfect for families, kids, or couples wanting a smaller collection.',
+      features: [
+        '25 minutes of session time',
+        '15 edited images',
+        'One location',
+      ],
+    },
+    {
       name: 'The Signature Portrait Experience',
       price: '$675',
       duration: 'Starting at',
@@ -25,17 +36,6 @@ const PricingPage = () => {
         '30–40 edited images',
         '$50 print credit toward albums or wall art',
         'Use of studio props and wraps',
-      ],
-    },
-    {
-      name: 'The Mini Story Session',
-      price: '$350',
-      duration: 'Starting at',
-      description: 'Ideal for quick updates or seasonal moments — perfect for families, kids, or couples wanting a smaller collection.',
-      features: [
-        '25 minutes of session time',
-        '15 edited images',
-        'One location',
       ],
     },
   ];

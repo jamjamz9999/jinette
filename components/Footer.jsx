@@ -67,7 +67,7 @@ const Footer = ({ onAdminClick }) => {
           {/* Main Footer Content */}
           <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-6 md:gap-6">
             {/* Left - Made in America */}
-            <div className="flex items-center gap-2 sm:gap-3 justify-self-center md:justify-self-start" style={{ transform: 'translateX(-50px)' }}>
+            <div className="flex items-center gap-2 sm:gap-3 justify-self-center md:justify-self-start" style={{ marginLeft: '-40px' }}>
               <span className="text-2xl sm:text-3xl">🇺🇸</span>
               <div className="flex items-center gap-1 flex-wrap">
                 <p className="text-xs sm:text-sm font-bold tracking-widest uppercase">
@@ -98,7 +98,7 @@ const Footer = ({ onAdminClick }) => {
                   }}
                   title={icon.alt}
                 >
-                  <img src={icon.src} alt={icon.alt} className="w-8 h-8 sm:w-10 sm:h-10" />
+                  <img src={icon.src} alt={icon.alt} className="w-12 h-12 sm:w-14 sm:h-14" />
                 </a>
               ))}
             </div>
