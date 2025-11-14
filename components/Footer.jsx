@@ -67,7 +67,7 @@ const Footer = ({ onAdminClick }) => {
           {/* Main Footer Content */}
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
             {/* Left - Made in America */}
-            <div className="flex items-center gap-2 sm:gap-3" style={{ marginLeft: '10px' }}>
+            <div className="flex items-center gap-2 sm:gap-3 lg:flex-1" style={{ marginLeft: '10px' }}>
               <span className="text-2xl sm:text-3xl">🇺🇸</span>
               <div className="flex items-center gap-1 flex-wrap">
                 <p className="text-xs sm:text-sm font-bold tracking-widest uppercase">
@@ -77,8 +77,8 @@ const Footer = ({ onAdminClick }) => {
               </div>
             </div>
 
-            {/* Center - Social Icons */}
-            <div className="flex justify-center gap-4 sm:gap-6 w-full">
+            {/* Center - Social Icons - Absolutely Centered */}
+            <div className="flex justify-center gap-4 sm:gap-6 lg:flex-1 lg:justify-center">
               {[
                 { href: 'https://instagram.com', src: instagramIcon, alt: 'Instagram' },
                 { href: 'https://facebook.com', src: facebookIcon, alt: 'Facebook' },
@@ -104,7 +104,8 @@ const Footer = ({ onAdminClick }) => {
             </div>
 
             {/* Right - Contact Info */}
-            <div className="flex flex-col items-center lg:items-end gap-1 text-xs sm:text-sm text-white">
+            {/* Right - Contact Info */}
+            <div className="flex flex-col items-center lg:items-end gap-1 text-xs sm:text-sm text-white lg:flex-1" style={{ transform: 'translateX(40px)' }}>
               <a href="tel:+14842745444" className="hover:text-gray-300 transition-colors text-center md:text-right">
                 (484) 274-5444
               </a>
