@@ -188,19 +188,22 @@ const HomePage = () => {
           </div>
 
           <div className="gallery-top-polaroids">
-            {/* Show 5 polaroid highlights: 3 on top row, 2 on second row */}
-            <div className="gallery-grid-polaroids" role="list">
-              {GALLERY_PHOTOS.slice(0,5).map((photo, i) => (
-                <div key={photo.id} className={`polaroid-wrapper ${['tilt-1','tilt-2','tilt-3','tilt-4','tilt-5'][i] || ''}`}>
-                  <article className={`polaroid ${i===0? 'size-lg':''} `} role="listitem">
-                    <div className="polaroid-frame">
-                      <img src={photo.src || photo.thumbnail} alt={photo.title} className="polaroid-img" />
-                      <div className="polaroid-overlay" />
-                    </div>
-                    <div className="polaroid-caption">{photo.title}</div>
-                  </article>
-                </div>
-              ))}
+            {/* Show 8 polaroid highlights: 3 top, 3 middle, 2 bottom centered */}
+            <div className="polaroid-grid-3-3-2" role="list">
+              {GALLERY_PHOTOS.slice(0,8).map((photo, i) => {
+                const tilts = ['tilt-1','tilt-2','tilt-3','tilt-4','tilt-5','tilt-1','tilt-2','tilt-3'];
+                return (
+                  <div key={photo.id} className={`polaroid-wrapper ${tilts[i] || ''}`}>
+                    <article className="polaroid" role="listitem">
+                      <div className="polaroid-frame">
+                        <img src={photo.src || photo.thumbnail} alt={photo.title} className="polaroid-img" />
+                        <div className="polaroid-overlay" />
+                      </div>
+                      <div className="polaroid-caption">{photo.title}</div>
+                    </article>
+                  </div>
+                );
+              })}
             </div>
             <div style={{height:12}} />
           </div>

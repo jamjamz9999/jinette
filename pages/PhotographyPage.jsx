@@ -54,50 +54,26 @@ const PhotographyPage = ({ onImageClick, isAdmin = false }) => {
           ))}
         </div>
 
-        {/* Gallery Grid — editorial two-column layout on large screens */}
+        {/* Gallery Grid — masonry layout with hover info overlays */}
         {filteredPhotos.length > 0 ? (
-          <div className="gallery-layout">
-            {/* Left: feature image */}
-            <div className="gallery-left">
-              {filteredPhotos[0] && (
-                  <div
-                    className="group relative overflow-visible cursor-pointer transition-shadow duration-500"
-                    onClick={() => handleImageClick(filteredPhotos[0].id)}
-                    role="button"
-                    tabIndex={0}
-                    onKeyDown={(event) => (event.key === 'Enter' || event.key === ' ') && handleImageClick(filteredPhotos[0].id)}
-                  >
-                    <figure className="polaroid size-lg">
-                      <div className="polaroid-frame">
-                        <img src={filteredPhotos[0].thumbnail || filteredPhotos[0].src} alt={filteredPhotos[0].title} className="polaroid-img" />
-                        <div className="polaroid-overlay" />
-                      </div>
-                      <figcaption className="polaroid-caption">{filteredPhotos[0].title}</figcaption>
-                    </figure>
-                  </div>
-                )}
-            </div>
-
-            {/* Right: stacked grid of remaining images */}
-            <div className="gallery-right">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {filteredPhotos.slice(1).map((photo, idx) => {
-                  const sizes = ['size-sm','size-md','size-sm','size-md','size-sm'];
-                  const sizeClass = sizes[idx % sizes.length] || 'size-md';
-                  return (
-                    <div key={photo.id} className="group relative overflow-visible cursor-pointer" onClick={() => handleImageClick(photo.id)} role="button" tabIndex={0} onKeyDown={(event) => (event.key === 'Enter' || event.key === ' ') && handleImageClick(photo.id)}>
-                      <figure className={`polaroid ${sizeClass}`}>
-                        <div className="polaroid-frame">
-                          <img src={photo.thumbnail || photo.src} alt={photo.title} className="polaroid-img" />
-                          <div className="polaroid-overlay" />
-                        </div>
-                        <figcaption className="polaroid-caption">{photo.title}</figcaption>
-                      </figure>
-                    </div>
-                  );
-                })}
+          <div className="gallery-masonry">
+            {filteredPhotos.map((photo) => (
+              <div
+                key={photo.id}
+                className="gallery-masonry-item group"
+                onClick={() => handleImageClick(photo.id)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(event) => (event.key === 'Enter' || event.key === ' ') && handleImageClick(photo.id)}
+              >
+                <img src={photo.thumbnail || photo.src} alt={photo.title} className="gallery-masonry-img" />
+                <div className="gallery-masonry-overlay">
+                  <div className="gallery-masonry-category">{photo.category}</div>
+                  <h3 className="gallery-masonry-title">{photo.title}</h3>
+                  <p className="gallery-masonry-description">{photo.description?.slice(0, 100) || 'Fine art photography crafted with passion and precision.'}</p>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
         ) : (
           <div className="text-center text-gray-500">No images found.</div>
