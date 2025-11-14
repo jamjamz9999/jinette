@@ -2,6 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Viewport Scaling - Fixed Aspect Ratio (16:9 - 1920x1080) */
+:root {
+  --viewport-scale: 1;
+  --design-width: 1920;
+  --design-height: 1080;
+}
+
+/* Reset body and html to remove scrollbars and margins */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+}
+
+/* Root container for React app */
+#root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
+}
+
+/* Viewport fit container - scales entire app as a unit */
+.viewport-fit-container {
+  width: var(--design-width);
+  height: var(--design-height);
+  transform: scale(var(--viewport-scale));
+  transform-origin: center center;
+  overflow: hidden;
+  position: relative;
+  background-color: #fff;
+}
+
 /* Custom fonts and typography */
 .fredericka-the-great-regular {
   font-family: 'Fredericka the Great', serif;

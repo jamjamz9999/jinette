@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import HomePage from './pages/HomePage';
 import PhotographyPage from './pages/PhotographyPage';
 import AboutPage from './pages/AboutPage';
@@ -476,8 +476,36 @@ const App = () => {
   const [showAdminLogin, setShowAdminLogin] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  // Viewport scaling resize handler
+  useEffect(() => {
+    const updateScale = () => {
+      const designWidth = 1920;
+      const designHeight = 1080;
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+      
+      // Calculate scale to fit viewport while maintaining aspect ratio
+      const scaleX = viewportWidth / designWidth;
+      const scaleY = viewportHeight / designHeight;
+      const scale = Math.min(scaleX, scaleY);
+      
+      // Update CSS variable
+      document.documentElement.style.setProperty('--viewport-scale', scale);
+    };
+
+    // Initial scale
+    updateScale();
+
+    // Update on resize
+    window.addEventListener('resize', updateScale);
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', updateScale);
+  }, []);
+
   return (
-    <div className="flex flex-col min-h-screen bg-white text-gray-800">
+    <div className="viewport-fit-container">
+      <div className="flex flex-col min-h-screen bg-white text-gray-800" style={{ width: '1920px', height: '1080px' }}>
       <style>{styles}</style>
       
       {/* Topbar Header - Hidden on image detail page */}
@@ -758,6 +786,7 @@ const App = () => {
           console.log('Image changed:', change);
         }}
       />
+      </div>
     </div>
   );
 };
