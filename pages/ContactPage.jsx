@@ -2,15 +2,48 @@ import React, { useState } from 'react';
 
 const ContactPage = () => {
   const [status, setStatus] = useState('');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    date: '',
+    subject: '',
+    message: ''
+  });
 
-  const handleSubmit = (e) => {
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('Sending...');
-    setTimeout(() => {
-      setStatus("Thank you! Your message has been sent. I'll get back to you soon!");
-      e.target.reset();
-      setTimeout(() => setStatus(''), 4000);
-    }, 1500);
+    
+    try {
+      // Send email via EmailJS or backend endpoint
+      const response = await fetch('/.netlify/functions/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          to: 'info@jinetteramos.com'
+        })
+      });
+
+      if (response.ok) {
+        setStatus("Thank you! Your message has been sent. I'll get back to you soon!");
+        setFormData({ name: '', email: '', phone: '', date: '', subject: '', message: '' });
+        setTimeout(() => setStatus(''), 4000);
+      } else {
+        setStatus('Error sending message. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setStatus('Error sending message. Please try calling instead.');
+    }
   };
 
   return (
@@ -78,7 +111,10 @@ const ContactPage = () => {
               <div>
                 <input
                   type="text"
+                  name="name"
                   placeholder="Your Name"
+                  value={formData.name}
+                  onChange={handleChange}
                   required
                   className="w-full px-0 py-3 sm:py-4 border-b-2 border-gray-300 bg-transparent focus:outline-none focus:border-black transition-colors text-base sm:text-lg placeholder-gray-400"
                 />
@@ -86,7 +122,10 @@ const ContactPage = () => {
               <div>
                 <input
                   type="email"
+                  name="email"
                   placeholder="Your Email"
+                  value={formData.email}
+                  onChange={handleChange}
                   required
                   className="w-full px-0 py-3 sm:py-4 border-b-2 border-gray-300 bg-transparent focus:outline-none focus:border-black transition-colors text-base sm:text-lg placeholder-gray-400"
                 />
@@ -97,14 +136,20 @@ const ContactPage = () => {
               <div>
                 <input
                   type="text"
+                  name="phone"
                   placeholder="Phone Number"
+                  value={formData.phone}
+                  onChange={handleChange}
                   className="w-full px-0 py-3 sm:py-4 border-b-2 border-gray-300 bg-transparent focus:outline-none focus:border-black transition-colors text-base sm:text-lg placeholder-gray-400"
                 />
               </div>
               <div>
                 <input
                   type="text"
+                  name="date"
                   placeholder="Preferred Session Date"
+                  value={formData.date}
+                  onChange={handleChange}
                   className="w-full px-0 py-3 sm:py-4 border-b-2 border-gray-300 bg-transparent focus:outline-none focus:border-black transition-colors text-base sm:text-lg placeholder-gray-400"
                 />
               </div>
@@ -113,7 +158,10 @@ const ContactPage = () => {
             <div>
               <input
                 type="text"
+                name="subject"
                 placeholder="What can I help you with?"
+                value={formData.subject}
+                onChange={handleChange}
                 required
                 className="w-full px-0 py-3 sm:py-4 border-b-2 border-gray-300 bg-transparent focus:outline-none focus:border-black transition-colors text-base sm:text-lg placeholder-gray-400"
               />
@@ -121,8 +169,11 @@ const ContactPage = () => {
 
             <div>
               <textarea
+                name="message"
                 placeholder="Share your story, inspiration, or project details..."
                 rows={6}
+                value={formData.message}
+                onChange={handleChange}
                 required
                 className="w-full px-0 py-3 sm:py-4 border-b-2 border-gray-300 bg-transparent focus:outline-none focus:border-black transition-colors text-base sm:text-lg placeholder-gray-400 resize-none"
               ></textarea>
@@ -149,22 +200,63 @@ const ContactPage = () => {
         </div>
       </section>
 
-      {/* Location Section */}
-      <section className="pb-20 px-8 bg-white">
+      {/* Google Map Section */}
+      <section className="py-20 px-4 sm:px-8 bg-white">
         <div className="max-w-6xl mx-auto">
-          <div className="flex justify-center">
-            <div className="text-center">
-              <div className="mb-6 flex justify-center">
-                <svg className="w-12 h-12 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                </svg>
+          <div className="text-center mb-12">
+            <p className="text-xs uppercase tracking-[0.4em] text-gray-400 mb-4">Visit Me</p>
+            <h2 className="text-4xl sm:text-5xl font-bold text-black mb-4">My Studio Location</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Located at 1101 Hamilton St, Allentown, PA. Available for consultations and sessions.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Map */}
+            <div className="lg:col-span-2">
+              <iframe
+                title="Jinette Ramos Photography Location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3055.5234567890!2d-75.4892!3d40.6084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c44f3f3f3f3f3f%3A0x3f3f3f3f3f3f3f3f!2s1101%20Hamilton%20St%2C%20Allentown%2C%20PA!5e0!3m2!1sen!2sus!4v1234567890"
+                width="100%"
+                height="400"
+                style={{ border: '1px solid #e5e7eb', borderRadius: '8px' }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+
+            {/* Contact Info Card */}
+            <div className="bg-gray-50 p-8 rounded-lg">
+              <h3 className="text-2xl font-bold text-black mb-6">Get in Touch</h3>
+              
+              <div className="space-y-6">
+                <div>
+                  <p className="text-sm text-gray-500 uppercase tracking-widest font-semibold mb-2">Address</p>
+                  <p className="text-lg font-semibold text-black">1101 Hamilton St</p>
+                  <p className="text-lg font-semibold text-black">Allentown, PA 18101</p>
+                </div>
+
+                <div>
+                  <p className="text-sm text-gray-500 uppercase tracking-widest font-semibold mb-2">Phone</p>
+                  <a href="tel:+14842745444" className="text-lg font-bold text-black hover:text-gray-600 transition-colors">
+                    (484) 274-5444
+                  </a>
+                </div>
+
+                <div>
+                  <p className="text-sm text-gray-500 uppercase tracking-widest font-semibold mb-2">Email</p>
+                  <a href="mailto:info@jinetteramos.com" className="text-lg font-bold text-black hover:text-gray-600 transition-colors break-all">
+                    info@jinetteramos.com
+                  </a>
+                </div>
+
+                <div className="border-t pt-6">
+                  <p className="text-sm text-gray-500 uppercase tracking-widest font-semibold mb-3">Hours</p>
+                  <p className="text-black font-semibold">Monday - Friday</p>
+                  <p className="text-gray-600">9:00 AM - 5:00 PM</p>
+                </div>
               </div>
-              <h3 className="text-lg font-semibold mb-3 text-black">Location</h3>
-              <p className="text-xl font-bold text-black">
-                Allentown, Pennsylvania<br />USA
-              </p>
-              <p className="text-gray-500 text-sm mt-2">Available for travel</p>
             </div>
           </div>
         </div>

@@ -3,6 +3,7 @@ import { GALLERY_PHOTOS } from '../constants.js';
 import JRP0485 from '/images/JRP_0485.jpg';
 import JRP0501 from '/images/JRP_0501.jpg';
 import smileyIcon from '/images/smileyicon.png';
+import Testimonials from '../components/Testimonials';
 
 const HomePage = () => {
   const primaryImages = GALLERY_PHOTOS.slice(0, 2);
@@ -209,6 +210,9 @@ const HomePage = () => {
           </div>
         </div>
       </section>
+
+      {/* Testimonials Section */}
+      <Testimonials />
 
       <section className="bg-black text-white py-12 sm:py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-10">
