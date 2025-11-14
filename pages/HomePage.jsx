@@ -1,6 +1,6 @@
 import React from 'react';
 import { GALLERY_PHOTOS } from '../constants.js';
-import JRP0485 from '/images/JRP_0485.jpg';
+import leftImage from '/images/pictures/left.jpg';
 import JRP0501 from '/images/JRP_0501.jpg';
 import smileyIcon from '/images/smileyicon.png';
 import Testimonials from '../components/Testimonials';
@@ -54,7 +54,7 @@ const HomePage = () => {
             >
               <div className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] overflow-hidden rounded-xl">
                 <img
-                  src={JRP0485}
+                  src={leftImage}
                   alt="Photography work"
                   className="w-full h-full object-cover"
                 />

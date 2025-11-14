@@ -441,30 +441,30 @@
 .pricing-table tbody tr:nth-child(even) td.value-cell { background: #fbfbfd; }
 
 .plan-head { color: white; position: relative; }
-/* Polaroid-style gallery cards - Enhanced Professional Design */
+/* Polaroid-style gallery cards - Enhanced Professional Design with Realistic Dimensions */
 .polaroid {
   display: inline-block;
   background: #fff;
-  padding: 14px 14px 32px 14px;
+  padding: 16px 16px 40px 16px;
   border: 1px solid rgba(10, 10, 10, 0.05);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
-  margin: 16px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08);
+  margin: 20px;
   transform-origin: center;
   transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
   backdrop-filter: blur(1px);
 }
 
 .polaroid:hover {
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.15), 0 4px 8px rgba(0, 0, 0, 0.08);
-  transform: translateY(-6px);
+  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.18), 0 6px 12px rgba(0, 0, 0, 0.12);
+  transform: translateY(-8px);
 }
 
 .polaroid-frame {
   position: relative;
   overflow: hidden;
   display: block;
-  width: 340px;
-  height: 220px;
+  width: 420px;
+  height: 530px;
   border-radius: 3px;
   background: #f5f5f5;
 }
@@ -490,15 +490,30 @@
   pointer-events: none;
   box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.4), inset 0 12px 24px rgba(0, 0, 0, 0.08);
   border-radius: 3px;
+  z-index: 2;
+}
+
+.polaroid-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.1) 0%, rgba(255, 255, 255, 0.08) 50%, rgba(0, 0, 0, 0.12) 100%);
+  backdrop-filter: blur(0.8px);
+  -webkit-backdrop-filter: blur(0.8px);
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: 1;
+  border-radius: 3px;
 }
 
 .polaroid-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.15) 100%);
-  opacity: 0.15;
+  opacity: 0.2;
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
+  z-index: 1;
 }
 
 .polaroid:hover .polaroid-overlay,
@@ -507,15 +522,15 @@
 }
 
 .polaroid-caption {
-  margin-top: 10px;
+  margin-top: 16px;
   font-family: 'Patrick Hand', cursive;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
-  color: #1a1a1a;
+  color: #2a2a2a;
   text-align: center;
   letter-spacing: 0.4px;
-  line-height: 1.4;
-  opacity: 0.95;
+  line-height: 1.5;
+  opacity: 0.92;
   transition: opacity 250ms ease, color 250ms ease;
 }
 
@@ -524,10 +539,10 @@
   color: #000;
 }
 
-/* Varying sizes for gallery (non-uniform layout) */
-.polaroid.size-sm .polaroid-frame { width: 240px; height: 160px }
-.polaroid.size-md .polaroid-frame { width: 320px; height: 220px }
-.polaroid.size-lg .polaroid-frame { width: 420px; height: 300px }
+/* Varying sizes for gallery (non-uniform layout) - Realistic Polaroid dimensions */
+.polaroid.size-sm .polaroid-frame { width: 340px; height: 430px }
+.polaroid.size-md .polaroid-frame { width: 420px; height: 530px }
+.polaroid.size-lg .polaroid-frame { width: 490px; height: 620px }
 
 /* Slight rotation helpers for the homepage cluster - Enhanced for professional feel */
 .tilt-1 { transform: rotate(-4.5deg); }
@@ -545,10 +560,10 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 28px;
-  max-width: 1500px;
+  gap: 32px;
+  max-width: 1700px;
   margin: 0 auto;
-  padding: 12px;
+  padding: 16px;
 }
 
 .polaroid-wrapper {
