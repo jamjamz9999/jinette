@@ -98,7 +98,7 @@ const Footer = ({ onAdminClick }) => {
                   }}
                   title={icon.alt}
                 >
-                  <img src={icon.src} alt={icon.alt} className="w-12 h-12 sm:w-14 sm:h-14" />
+                  <img src={icon.src} alt={icon.alt} className="w-12 h-12 sm:w-14 sm:h-14 footer-social-icon" />
                 </a>
               ))}
             </div>
@@ -127,7 +127,7 @@ const Footer = ({ onAdminClick }) => {
 
           {/* Bottom Copyright */}
           <div className="text-center text-xs sm:text-sm text-white relative pt-4">
-            <p className="mb-4 md:mb-0">© 2016-2025 Jinette Ramos Photography. All rights reserved.</p>
+            <p className="mb-4 md:mb-0 font-bold tracking-wider">BEST PHOTOGRAPHER IN ALLENTOWN, USA</p>
             {/* Admin Button - Far Right */}
             <button
               onClick={onAdminClick}

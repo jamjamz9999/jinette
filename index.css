@@ -647,12 +647,12 @@
 
 .polaroid-caption {
   margin-top: 4px;
-  font-family: 'Patrick Hand', cursive;
-  font-size: 10px;
-  font-weight: 500;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px;
+  font-weight: 600;
   color: #2a2a2a;
   text-align: center;
-  letter-spacing: 0.4px;
+  letter-spacing: 0.6px;
   line-height: 1.3;
   opacity: 0.92;
   transition: opacity 250ms ease, color 250ms ease;
@@ -768,6 +768,87 @@
   .polaroid-caption {
     font-size: 7px;
     margin-top: 1px;
+  }
+}
+
+/* Responsive 3-row polaroid grid for home page */
+.polaroid-grid-home {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 20px;
+  max-width: 100%;
+  padding: 20px;
+  overflow-x: auto;
+}
+
+.polaroid-grid-home .polaroid-wrapper {
+  flex: 0 0 auto;
+  transform: rotate(var(--rotation, 0deg));
+}
+
+.polaroid-grid-home .polaroid {
+  margin: 0;
+}
+
+.polaroid-grid-home .polaroid-frame {
+  width: 136.5px;
+  height: 172.25px;
+}
+
+.polaroid-grid-home .polaroid-caption {
+  font-size: 12px;
+}
+
+@media (max-width: 1024px) {
+  .polaroid-grid-home {
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .polaroid-grid-home .polaroid-wrapper {
+    flex: 0 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .polaroid-grid-home {
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .polaroid-grid-home .polaroid-wrapper {
+    flex: 0 0 auto;
+  }
+
+  .polaroid-grid-home .polaroid-frame {
+    width: 104px;
+    height: 131px;
+  }
+
+  .polaroid-grid-home .polaroid-caption {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 640px) {
+  .polaroid-grid-home {
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .polaroid-grid-home .polaroid-wrapper {
+    flex: 0 0 auto;
+  }
+
+  .polaroid-grid-home .polaroid-frame {
+    width: 91px;
+    height: 114.75px;
+  }
+
+  .polaroid-grid-home .polaroid-caption {
+    font-size: 9px;
+    margin-top: 2px;
   }
 }
 

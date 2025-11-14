@@ -3,11 +3,27 @@ import { Link, NavLink } from 'react-router-dom';
 import { NAV_LINKS } from '../constants.js';
 import MenuOverlay from './MenuOverlay.jsx';
 import headerBg from '/images/header.png';
+import instagramIcon from '/images/instagram.png';
+import facebookIcon from '/images/facebook.png';
 
 const Navbar = forwardRef((props, ref) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const socialLinks = [
+    { href: 'https://instagram.com', icon: instagramIcon, alt: 'Instagram' },
+    { href: 'https://facebook.com', icon: facebookIcon, alt: 'Facebook' },
+  ];
+
   const headerStyle = `
+    @keyframes headerBreathing {
+      0%, 100% { filter: brightness(0.8); }
+      50% { filter: brightness(1.3); }
+    }
+    
+    .navbar-header-social {
+      animation: headerBreathing 3.5s ease-in-out infinite;
+    }
+
     .navbar-header::before {
       background-image: url(${headerBg});
     }
@@ -54,6 +70,13 @@ const Navbar = forwardRef((props, ref) => {
                 </NavLink>
               ))}
             </nav>
+            <div className="hidden md:flex items-center gap-4">
+              {socialLinks.map((social, idx) => (
+                <a key={idx} href={social.href} target="_blank" rel="noopener noreferrer" className="navbar-header-social transition-all duration-300">
+                  <img src={social.icon} alt={social.alt} className="w-8 h-8" />
+                </a>
+              ))}
+            </div>
             <div className="lg:hidden pr-2">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
