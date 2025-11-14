@@ -105,14 +105,20 @@ const Footer = ({ onAdminClick }) => {
 
             {/* Right - Contact Info */}
             {/* Right - Contact Info */}
-            <div className="flex flex-col items-center lg:items-end gap-1 text-xs sm:text-sm text-white lg:flex-1" style={{ transform: 'translateX(40px)' }}>
-              <a href="tel:+14842745444" className="hover:text-gray-300 transition-colors text-center md:text-right">
-                (484) 274-5444
-              </a>
-              <a href="mailto:info@jinetteramos.com" className="hover:text-gray-300 transition-colors text-center md:text-right break-all">
-                info@jinetteramos.com
-              </a>
-              <span className="text-white text-center md:text-right">Allentown, PA</span>
+            <div className="flex flex-col items-center lg:items-end gap-2 text-xs sm:text-sm text-white lg:flex-1">
+              <div className="flex flex-col items-center lg:items-end gap-1">
+                <a href="tel:+14842745444" className="hover:text-gray-300 transition-colors text-center lg:text-right font-semibold">
+                  (484) 274-5444
+                </a>
+                <a href="mailto:info@jinetteramos.com" className="hover:text-gray-300 transition-colors text-center lg:text-right break-all">
+                  info@jinetteramos.com
+                </a>
+              </div>
+              <div className="text-center lg:text-right text-xs text-gray-200">
+                <p>1101 Hamilton St</p>
+                <p>Allentown, PA 18101</p>
+                <p className="text-xs text-gray-300 mt-1">Available for travel</p>
+              </div>
             </div>
           </div>
 

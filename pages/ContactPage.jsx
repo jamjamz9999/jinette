@@ -216,7 +216,7 @@ const ContactPage = () => {
             <div className="lg:col-span-2">
               <iframe
                 title="Jinette Ramos Photography Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3055.5234567890!2d-75.4892!3d40.6084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c44f3f3f3f3f3f%3A0x3f3f3f3f3f3f3f3f!2s1101%20Hamilton%20St%2C%20Allentown%2C%20PA!5e0!3m2!1sen!2sus!4v1234567890"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3055.6894!2d-75.49043!3d40.60734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c449f0d7d7d7d7%3A0x1234567890!2s1101%20Hamilton%20St%2C%20Allentown%2C%20PA%2018101!5e0!3m2!1sen!2sus!4v1605000000000"
                 width="100%"
                 height="400"
                 style={{ border: '1px solid #e5e7eb', borderRadius: '8px' }}
