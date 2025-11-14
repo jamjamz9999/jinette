@@ -134,7 +134,43 @@ The app content is wrapped in two divs:
 2. **Scale Calculation**: Compares viewport dimensions to design dimensions (1920x1080) and chooses the smaller scale factor
 3. **Transform Applied**: The CSS `transform: scale()` is applied to the entire content container
 4. **Centering**: Flexbox centers the scaled content in the viewport
-5. **On Resize**: The handler recalculates and updates the scale smoothly
+5. **On Resize**: The handler recalculates and updates the scale smoothly with debouncing (16ms/60fps)
+6. **Image Optimization**: GPU acceleration and high-quality rendering prevent quality loss on mobile
+
+## Image Rendering Optimizations
+
+### GPU Acceleration
+All images and the viewport container use GPU-accelerated transforms:
+- `will-change: transform` - Prepares elements for animation
+- `backface-visibility: hidden` - Prevents flickering
+- `transform: translateZ(0)` - Forces GPU rendering
+
+### High-Quality Rendering
+Multiple CSS properties ensure maximum image quality:
+```css
+image-rendering: -webkit-optimize-contrast;
+image-rendering: high-quality;
+```
+
+### High-DPI Display Support
+Dedicated media query for Retina and high-resolution displays:
+```css
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Optimized rendering for high-DPI screens */
+}
+```
+
+### Mobile Optimizations
+- Subpixel antialiasing on mobile devices
+- Prevention of image degradation during zoom
+- Orientation change event handling
+- Debounced resize for smooth performance
+
+### Performance Improvements
+- Debouncing: Resize events throttled to 16ms (60fps)
+- Pixel ratio detection: Adapts to device capabilities
+- Hardware acceleration: GPU-based transforms
+- Memory management: Proper cleanup of event listeners
 
 ## Examples
 
@@ -160,7 +196,10 @@ The app content is wrapped in two divs:
 2. **No Breakpoints Needed**: Single layout works everywhere
 3. **No Content Loss**: Everything is always visible
 4. **Maintainable**: Changes to desktop design automatically work on mobile
-5. **Performance**: Uses CSS transforms (GPU accelerated)
+5. **High Performance**: GPU-accelerated transforms with debouncing (60fps)
+6. **Image Quality**: Optimized rendering prevents quality loss on mobile
+7. **High-DPI Support**: Retina and high-resolution display optimization
+8. **Cross-Platform**: Works seamlessly on iOS, Android, and desktop browsers
 
 ## Important Implementation Notes
 
