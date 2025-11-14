@@ -17,6 +17,7 @@ import ServicesPage from './pages/ServicesPage';
 import Footer from './components/Footer';
 import AdminLogin from './components/AdminLogin';
 import AdminPanel from './components/AdminPanel';
+import headerBg from '/images/header.png';
 
 // Add CSS animations and Google Fonts
 const styles = `
@@ -168,7 +169,8 @@ const styles = `
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
   }
-  
+
+  .navbar-header::before,
   .header::before {
     content: '';
     position: absolute;
@@ -176,7 +178,6 @@ const styles = `
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('/images/header.png') center/cover no-repeat;
     background-size: 125%;
     /* only animate movement (no opacity changes) and increase speed */
     animation: moveBackgroundSmooth 25s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
