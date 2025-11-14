@@ -1,5 +1,8 @@
 import React from 'react';
 import { GALLERY_PHOTOS } from '../constants.js';
+import JRP0485 from '/images/JRP_0485.jpg';
+import JRP0501 from '/images/JRP_0501.jpg';
+import smileyIcon from '/images/smileyicon.png';
 
 const HomePage = () => {
   const primaryImages = GALLERY_PHOTOS.slice(0, 2);
@@ -50,7 +53,7 @@ const HomePage = () => {
             >
               <div className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] overflow-hidden rounded-xl">
                 <img
-                  src="/images/JRP_0485.jpg"
+                  src={JRP0485}
                   alt="Photography work"
                   className="w-full h-full object-cover"
                 />
@@ -81,7 +84,7 @@ const HomePage = () => {
             >
               <div className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] overflow-hidden rounded-xl">
                 <img
-                  src="/images/JRP_0501.jpg"
+                  src={JRP0501}
                   alt="Photography work"
                   className="w-full h-full object-cover"
                 />
@@ -174,7 +177,7 @@ const HomePage = () => {
               <p className="text-xs sm:text-sm uppercase tracking-[0.4em] text-gray-500">Gallery Highlights</p>
               <h2 className="mt-2 sm:mt-3 text-2xl sm:text-3xl md:text-4xl font-semibold text-black flex items-center gap-2 flex-wrap">
                 <span>A kaleidoscope of light</span>
-                <img src="/images/smileyicon.png" alt="Smiley" className="w-6 h-6 sm:w-8 sm:h-8 object-contain inline-block" />
+                <img src={smileyIcon} alt="Smiley" className="w-6 h-6 sm:w-8 sm:h-8 object-contain inline-block" />
                 <span>emotion</span>
               </h2>
             </div>
