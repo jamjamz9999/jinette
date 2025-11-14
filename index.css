@@ -31,11 +31,11 @@ html, body {
 
 /* Viewport fit container - scales entire app as a unit */
 .viewport-fit-container {
-  width: var(--design-width);
-  height: var(--design-height);
+  width: calc(var(--design-width) * 1px);
+  height: calc(var(--design-height) * 1px);
   transform: scale(var(--viewport-scale));
   transform-origin: center center;
-  overflow: hidden;
+  overflow: visible;
   position: relative;
   background-color: #fff;
 }

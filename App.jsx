@@ -505,7 +505,7 @@ const App = () => {
 
   return (
     <div className="viewport-fit-container">
-      <div className="flex flex-col min-h-screen bg-white text-gray-800" style={{ width: '1920px', height: '1080px' }}>
+      <div className="flex flex-col bg-white text-gray-800" style={{ width: '1920px', height: '1080px', minHeight: '1080px' }}>
       <style>{styles}</style>
       
       {/* Topbar Header - Hidden on image detail page */}
@@ -569,7 +569,7 @@ const App = () => {
           </div>
 
           {/* Glassmorphic Navigation Bar - 15px below original position */}
-          <nav className="hidden md:flex items-center justify-center relative" style={{ marginTop: '45px' }}>
+          <nav className="flex items-center justify-center relative" style={{ marginTop: '45px' }}>
             <div 
               className="relative flex items-center gap-1 md:gap-2 px-3 md:px-6 py-2 md:py-3 rounded-[2rem] border transition-all duration-500 flex-wrap justify-center max-w-full"
               style={{
@@ -678,8 +678,8 @@ const App = () => {
           </nav>
 
 
-          {/* Mobile Menu */}
-          <div className="flex items-center gap-2 md:hidden absolute bottom-4 right-4 z-20">
+          {/* Mobile Menu - Hidden for viewport scaling (desktop layout always shown) */}
+          <div className="hidden">
             <button 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="p-3 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors bg-white/80 backdrop-blur-sm"
@@ -698,9 +698,9 @@ const App = () => {
             </button>
           </div>
           
-          {/* Mobile Menu Overlay */}
-          {isMobileMenuOpen && (
-            <div className="fixed inset-0 bg-white/95 backdrop-blur-lg z-50 md:hidden flex flex-col items-center justify-center">
+          {/* Mobile Menu Overlay - Hidden for viewport scaling (desktop layout always shown) */}
+          {false && isMobileMenuOpen && (
+            <div className="fixed inset-0 bg-white/95 backdrop-blur-lg z-50 flex flex-col items-center justify-center">
               <nav className="flex flex-col items-center gap-6 px-6">
                 {navItems.map(({ icon, label }) => {
                   const isActive = activePage === label;
