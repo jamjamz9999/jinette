@@ -406,10 +406,11 @@ const icons = {
           d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0 8c-1.65 0-3-1.35-3-3s1.35-3 3-3 3 1.35 3 3-1.35 3-3 3z"
         />
       </svg>
-      <div className="absolute top-full left-1/2 -translate-x-1/2 w-6 opacity-0 polaroid-drop pointer-events-none mt-2">
-        <svg viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="drop-shadow-lg">
-          <path d="M0 5C0 2.23858 2.23858 0 5 0H95C97.7614 0 100 2.23858 100 5V115C100 117.761 97.7614 120 95 120H5C2.23858 120 0 117.761 0 115V5Z" fill="white" />
+      <div className="absolute top-full left-1/2 -translate-x-1/2 opacity-0 polaroid-drop pointer-events-none mt-2" style={{ width: '28.8px' }}>
+        <svg viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="drop-shadow-xl transform transition-all duration-300 hover:scale-105">
+          <path d="M0 5C0 2.23858 2.23858 0 5 0H95C97.7614 0 100 2.23858 100 5V115C100 117.761 97.7614 120 95 120H5C2.23858 120 0 117.761 0 115V5Z" fill="white" stroke="#e5e7eb" strokeWidth="1" />
           <rect x="10" y="10" width="80" height="80" fill="#d1d5db" />
+          <rect x="10" y="95" width="80" height="15" fill="white" />
         </svg>
       </div>
     </div>
@@ -462,7 +463,6 @@ const navItems = [
   { icon: null, label: 'About' },
   { icon: icons.phone, label: 'Contact' },
   { icon: null, label: 'The Studio' },
-  { icon: null, label: 'Blog' },
   { icon: icons.dollar, label: 'Pricing' },
   { icon: null, label: 'What to Expect' },
   { icon: null, label: 'FAQ & Policy' },
@@ -528,10 +528,11 @@ const App = () => {
                     d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0 8c-1.65 0-3-1.35-3-3s1.35-3 3-3 3 1.35 3 3-1.35 3-3 3z"
                   />
                 </svg>
-                <div className="absolute top-full left-1/2 -translate-x-1/2 w-6 opacity-0 polaroid-drop pointer-events-none mt-2">
-                  <svg viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="drop-shadow-lg">
-                    <path d="M0 5C0 2.23858 2.23858 0 5 0H95C97.7614 0 100 2.23858 100 5V115C100 117.761 97.7614 120 95 120H5C2.23858 120 0 117.761 0 115V5Z" fill="white" />
+                <div className="absolute top-full left-1/2 -translate-x-1/2 opacity-0 polaroid-drop pointer-events-none mt-2" style={{ width: '28.8px' }}>
+                  <svg viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="drop-shadow-xl transform transition-all duration-300 hover:scale-105">
+                    <path d="M0 5C0 2.23858 2.23858 0 5 0H95C97.7614 0 100 2.23858 100 5V115C100 117.761 97.7614 120 95 120H5C2.23858 120 0 117.761 0 115V5Z" fill="white" stroke="#e5e7eb" strokeWidth="1" />
                     <rect x="10" y="10" width="80" height="80" fill="#d1d5db" />
+                    <rect x="10" y="95" width="80" height="15" fill="white" />
                   </svg>
                 </div>
               </div>
