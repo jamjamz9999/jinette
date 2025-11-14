@@ -529,35 +529,35 @@ const App = () => {
       {!selectedImageId && (
       <header className="header w-full shadow-sm" style={{ height: isAdmin ? '282px' : 'auto', minHeight: isAdmin ? '282px' : 'auto' }}>
         {/* Header Content - Glassmorphic Design */}
-        <div className="header-content w-full h-full flex flex-col items-center justify-between px-4 sm:px-6 md:px-8 py-4 relative" style={{ paddingTop: isAdmin ? '50px' : '16px' }}>
+        <div className="header-content w-full h-full flex flex-col items-center justify-between py-4 relative" style={{ paddingTop: isAdmin ? '50px' : '16px', paddingLeft: '32px', paddingRight: '32px' }}>
           {/* Social Media Icons - Top Right */}
-          <div className="absolute top-2 sm:top-4 right-2 sm:right-4 md:right-8 flex items-center gap-1 sm:gap-2 md:gap-3 flex-wrap max-w-[50%] justify-end">
+          <div className="absolute flex items-center gap-3 flex-wrap max-w-[50%] justify-end" style={{ top: '16px', right: '32px' }}>
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="header-social-icon" title="Instagram">
-              <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.646-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1 1 12.324 0 6.162 6.162 0 0 1-12.324 0zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm4.965-10.322a1.44 1.44 0 1 1 2.881.001 1.44 1.44 0 0 1-2.881-.001z"/></svg>
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.646-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1 1 12.324 0 6.162 6.162 0 0 1-12.324 0zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm4.965-10.322a1.44 1.44 0 1 1 2.881.001 1.44 1.44 0 0 1-2.881-.001z"/></svg>
             </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="header-social-icon hidden sm:inline-flex" title="X (Twitter)">
-              <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.627l-5.1-6.47-5.833 6.47H2.423l7.723-8.835L1.604 2.25h6.598l4.644 5.7 5.273-5.7zM17.002 18.335h1.395L6.627 3.864H5.116l11.886 14.471z"/></svg>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="header-social-icon inline-flex" title="X (Twitter)">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.627l-5.1-6.47-5.833 6.47H2.423l7.723-8.835L1.604 2.25h6.598l4.644 5.7 5.273-5.7zM17.002 18.335h1.395L6.627 3.864H5.116l11.886 14.471z"/></svg>
             </a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="header-social-icon hidden sm:inline-flex" title="Facebook">
-              <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 2h-3a6 6 0 00-6 6v3H7v4h2v8h4v-8h3l1-4h-4V8a1 1 0 011-1h3z"/></svg>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="header-social-icon inline-flex" title="Facebook">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 2h-3a6 6 0 00-6 6v3H7v4h2v8h4v-8h3l1-4h-4V8a1 1 0 011-1h3z"/></svg>
             </a>
-            <a href="https://flickr.com" target="_blank" rel="noopener noreferrer" className="header-social-icon hidden md:inline-flex" title="Flickr">
-              <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="12" r="3"/><circle cx="16" cy="12" r="3"/></svg>
+            <a href="https://flickr.com" target="_blank" rel="noopener noreferrer" className="header-social-icon inline-flex" title="Flickr">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="12" r="3"/><circle cx="16" cy="12" r="3"/></svg>
             </a>
-            <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" className="header-social-icon hidden md:inline-flex" title="Pinterest">
-              <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/><path d="M8 12c0 2.21 1.79 4 4 4s4-1.79 4-4-1.79-4-4-4-4 1.79-4 4z" fill="white"/></svg>
+            <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" className="header-social-icon inline-flex" title="Pinterest">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/><path d="M8 12c0 2.21 1.79 4 4 4s4-1.79 4-4-1.79-4-4-4-4 1.79-4 4z" fill="white"/></svg>
             </a>
           </div>
 
           {/* Title Section with Camera Icon on Left */}
-          <div className="flex-1 flex items-center justify-center gap-4 sm:gap-6 md:gap-10 mt-8 sm:mt-4 md:mt-0 mb-4 md:mb-0">
+          <div className="flex-1 flex items-center justify-center mb-0" style={{ gap: '40px', marginTop: '0' }}>
             {/* Camera Icon - Left */}
             <div className="flex items-center flex-shrink-0">
               <div
                 className="relative flex items-center justify-center text-black"
-                style={{ width: 'clamp(48px, 8vw, 72px)', height: 'clamp(48px, 8vw, 72px)', transform: 'translateX(0)' }}
+                style={{ width: '72px', height: '72px', transform: 'translateX(0)' }}
               >
-                <svg xmlns="http://www.w3.org/2000/svg" className="absolute h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16" viewBox="0 0 24 24">
+                <svg xmlns="http://www.w3.org/2000/svg" className="absolute h-16 w-16" viewBox="0 0 24 24">
                   <path
                     fill="#0f0f0f"
                     stroke="#0f0f0f"
@@ -582,13 +582,14 @@ const App = () => {
               </div>
             </div>
             {/* Title - Right */}
-            <span className="font-bold text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl fredericka-the-great-regular text-center sm:text-left leading-tight">Jinette Ramos Photography</span>
+            <span className="font-bold fredericka-the-great-regular text-center leading-tight" style={{ fontSize: '64px' }}>Jinette Ramos Photography</span>
           </div>
 
           {/* Glassmorphic Navigation Bar - 15px below original position */}
           <nav className="flex items-center justify-center relative" style={{ marginTop: '45px' }}>
             <div 
-              className="relative flex items-center gap-1 md:gap-2 px-3 md:px-6 py-2 md:py-3 rounded-[2rem] border transition-all duration-500 flex-wrap justify-center max-w-full"
+              className="relative flex items-center rounded-[2rem] border transition-all duration-500 flex-wrap justify-center max-w-full"
+              style={{ gap: '8px', paddingLeft: '24px', paddingRight: '24px', paddingTop: '12px', paddingBottom: '12px' }}
               style={{
                 background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.1) 100%)',
                 borderColor: 'rgba(255, 255, 255, 0.2)',
@@ -626,11 +627,12 @@ const App = () => {
                   <button
                 key={label} 
                     onClick={() => setActivePage(label)}
-                    className={`group relative px-3 md:px-5 py-2 md:py-2.5 rounded-xl font-medium text-xs md:text-sm transition-all duration-300 ease-out ${
+                    className={`group relative rounded-xl font-medium transition-all duration-300 ease-out ${
                       isActive
                         ? 'text-black'
                         : 'text-gray-700 hover:text-black'
                     }`}
+                    style={{ paddingLeft: '20px', paddingRight: '20px', paddingTop: '10px', paddingBottom: '10px', fontSize: '14px' }}
                     style={isActive ? {
                       background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.15) 100%)',
                       boxShadow: `
