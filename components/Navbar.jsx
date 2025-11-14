@@ -2,12 +2,15 @@ import React, { useState, forwardRef } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { NAV_LINKS } from '../constants.js';
 import MenuOverlay from './MenuOverlay.jsx';
+import VideoBackground from './VideoBackground.jsx';
+import headerVideo from '/header.mp4';
 
 const Navbar = forwardRef((props, ref) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <>
+      <VideoBackground src={headerVideo} opacity={0.3} />
       <header ref={ref} className="fixed top-[10px] left-[10px] right-[10px] z-50 transition-all duration-300">
         <div className="container mx-auto px-4 sm:px-0">
           <div className="flex items-center justify-between bg-white/30 backdrop-blur-2xl rounded-2xl shadow-lg shadow-black/10 border border-white/50 px-6 py-6">

@@ -1,4 +1,5 @@
 import React from 'react';
+import footerBg from '/images/footerbg.png';
 
 const Footer = ({ onAdminClick }) => {
   // Add breathing animation CSS and background movement
@@ -45,7 +46,7 @@ const Footer = ({ onAdminClick }) => {
       <footer 
         className="footer-animated-bg relative py-12 px-8 text-white overflow-hidden"
         style={{
-          backgroundImage: 'url(/images/footerbg.png)',
+          backgroundImage: `url(${footerBg})`,
           backgroundSize: '150%',
           backgroundPosition: '0% 0%',
           backgroundAttachment: 'scroll',

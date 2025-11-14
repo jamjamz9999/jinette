@@ -108,7 +108,7 @@ const PricingPage = () => {
                 key={pkg.name}
                 className={`relative rounded-2xl p-10 transition-all duration-500 hover:scale-105 ${
                   pkg.featured
-                    ? 'bg-gradient-to-br from-black to-gray-900 text-white shadow-2xl border-2 border-gray-700 transform scale-105'
+                    ? 'bg-gradient-to-br from-black to-gray-900 text-white shadow-2xl border-2 border-gray-700 lg:scale-105'
                     : 'bg-white text-gray-900 shadow-xl border border-gray-200 hover:shadow-2xl'
                 }`}
               >
