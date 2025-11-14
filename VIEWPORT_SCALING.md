@@ -203,13 +203,36 @@ Dedicated media query for Retina and high-resolution displays:
 
 ## Important Implementation Notes
 
-### Tailwind Responsive Classes
-Since the viewport scaling maintains a desktop layout at all times, **Tailwind's responsive breakpoints (sm:, md:, lg:) should not be used for show/hide behavior**. The desktop navigation is always visible and the mobile menu is disabled.
+### Tailwind Responsive Breakpoints Configuration
+**CRITICAL**: To make viewport scaling work correctly, Tailwind's responsive breakpoints are disabled by setting all breakpoints to `0px`. This forces Tailwind to always apply desktop styles regardless of actual viewport size.
 
-Key changes made:
-- Desktop navigation: Changed from `hidden md:flex` to just `flex` (always visible)
-- Mobile menu: Completely hidden since desktop layout is always shown
-- Responsive padding/spacing: Use fixed values instead of responsive classes for consistent scaling
+```javascript
+// In index.html
+tailwind.config = {
+  theme: {
+    screens: {
+      'sm': '0px',   // Always treat as large screen
+      'md': '0px',   // Always treat as large screen
+      'lg': '0px',   // Always treat as large screen
+      'xl': '0px',   // Always treat as large screen
+      '2xl': '0px',  // Always treat as large screen
+    }
+  }
+}
+```
+
+This configuration ensures:
+- Tailwind responsive classes (sm:, md:, lg:, xl:) are always active
+- Mobile browsers see desktop layout (just scaled down)
+- No mobile menu or responsive layout changes
+- Consistent desktop design across all devices
+
+### Fixed Sizing Values
+All components use fixed pixel values instead of responsive classes:
+- Social icons: Fixed at 16px (was w-3 sm:w-4)
+- Title text: Fixed at 64px (was text-xl sm:text-3xl md:text-4xl...)
+- Navigation padding: Fixed inline styles (was px-3 md:px-6)
+- All responsive Tailwind classes replaced with fixed values
 
 ### CSS Overflow Behavior
 The `.viewport-fit-container` uses `overflow: visible` to ensure all content is properly displayed during scaling. This is important for elements that may extend slightly beyond the container bounds.
