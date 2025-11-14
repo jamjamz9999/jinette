@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Hind:wght@300;400;500;600;700&display=swap');
+
+@keyframes scaleUp {
+  from { transform: scale(1); }
+  to { transform: scale(1.05); }
+}
+
+@keyframes moveBackgroundSmooth {
+  0% { background-position: 0% 0%; }
+  15% { background-position: 20% 25%; }
+  30% { background-position: 40% 30%; }
+  45% { background-position: 10% 60%; }
+  60% { background-position: 50% 20%; }
+  75% { background-position: 30% 10%; }
+  90% { background-position: 60% 40%; }
+  100% { background-position: 0% 0%; }
+}
+
+/* Typography */
+* {
+  font-family: 'Hind', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, .headline, .title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.header {
+  position: relative;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+}
+
+.nav-button {
+  transition: all 0.3s ease-in-out;
+  background-color: transparent !important;
+  border-radius: 12px !important;
+  padding: 10px 5px !important;
+}
