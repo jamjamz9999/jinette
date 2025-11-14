@@ -445,10 +445,10 @@
 .polaroid {
   display: inline-block;
   background: #fff;
-  padding: 16px 16px 40px 16px;
+  padding: 4px 4px 10px 4px;
   border: 1px solid rgba(10, 10, 10, 0.05);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08);
-  margin: 20px;
+  margin: 5px;
   transform-origin: center;
   transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
   backdrop-filter: blur(1px);
@@ -463,8 +463,8 @@
   position: relative;
   overflow: hidden;
   display: block;
-  width: 420px;
-  height: 530px;
+  width: 105px;
+  height: 132.5px;
   border-radius: 3px;
   background: #f5f5f5;
 }
@@ -522,14 +522,14 @@
 }
 
 .polaroid-caption {
-  margin-top: 16px;
+  margin-top: 4px;
   font-family: 'Patrick Hand', cursive;
-  font-size: 16px;
+  font-size: 10px;
   font-weight: 500;
   color: #2a2a2a;
   text-align: center;
   letter-spacing: 0.4px;
-  line-height: 1.5;
+  line-height: 1.3;
   opacity: 0.92;
   transition: opacity 250ms ease, color 250ms ease;
 }
@@ -540,9 +540,9 @@
 }
 
 /* Varying sizes for gallery (non-uniform layout) - Realistic Polaroid dimensions */
-.polaroid.size-sm .polaroid-frame { width: 340px; height: 430px }
-.polaroid.size-md .polaroid-frame { width: 420px; height: 530px }
-.polaroid.size-lg .polaroid-frame { width: 490px; height: 620px }
+.polaroid.size-sm .polaroid-frame { width: 85px; height: 107.5px }
+.polaroid.size-md .polaroid-frame { width: 105px; height: 132.5px }
+.polaroid.size-lg .polaroid-frame { width: 122.5px; height: 155px }
 
 /* Slight rotation helpers for the homepage cluster - Enhanced for professional feel */
 .tilt-1 { transform: rotate(-4.5deg); }
@@ -560,10 +560,10 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 32px;
-  max-width: 1700px;
+  gap: 8px;
+  max-width: 600px;
   margin: 0 auto;
-  padding: 16px;
+  padding: 8px;
 }
 
 .polaroid-wrapper {
