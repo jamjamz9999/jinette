@@ -162,11 +162,25 @@ The app content is wrapped in two divs:
 4. **Maintainable**: Changes to desktop design automatically work on mobile
 5. **Performance**: Uses CSS transforms (GPU accelerated)
 
+## Important Implementation Notes
+
+### Tailwind Responsive Classes
+Since the viewport scaling maintains a desktop layout at all times, **Tailwind's responsive breakpoints (sm:, md:, lg:) should not be used for show/hide behavior**. The desktop navigation is always visible and the mobile menu is disabled.
+
+Key changes made:
+- Desktop navigation: Changed from `hidden md:flex` to just `flex` (always visible)
+- Mobile menu: Completely hidden since desktop layout is always shown
+- Responsive padding/spacing: Use fixed values instead of responsive classes for consistent scaling
+
+### CSS Overflow Behavior
+The `.viewport-fit-container` uses `overflow: visible` to ensure all content is properly displayed during scaling. This is important for elements that may extend slightly beyond the container bounds.
+
 ## Trade-offs
 
 1. **Small Text on Mobile**: Text may be small on phones (but readable when zoomed)
 2. **Letterboxing**: Black bars appear when aspect ratios don't match
 3. **Fixed Aspect**: Cannot take advantage of portrait layouts on mobile
+4. **No Responsive Breakpoints**: Tailwind responsive classes should not be used for layout changes
 
 ## Customization
 
