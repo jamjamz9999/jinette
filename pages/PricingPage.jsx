@@ -1,212 +1,153 @@
 import React from 'react';
 
-import React from 'react';
-
 const PricingPage = () => {
   const pricingPackages = [
     {
-      name: 'The Mini Story Session',
+      name: 'Mini Story Session',
       price: '$350',
       duration: 'Starting at',
-      description: 'Ideal for quick updates or seasonal moments — perfect for families, kids, or couples wanting a smaller collection.',
-      features: [
-        '25 minutes of session time',
-        '15 edited images',
-        'One location',
-      ],
+      description: 'A short, focused session capturing authentic moments — great for families, couples, or seasonal minis.',
+      features: ['25 minutes of session time', '15 edited images', 'One location'],
     },
     {
-      name: 'The Signature Portrait Experience',
+      name: 'Signature Portrait Experience',
       price: '$675',
       duration: 'Starting at',
-      description: 'Perfect for families, couples, or maternity sessions who want a complete storytelling experience.',
-      features: [
-        'Up to 1 hour of session time',
-        '25–30 edited images delivered via online gallery',
-        'Styling guidance + location planning',
-      ],
+      description: 'A storytelling session for families or couples who want a fuller, curated experience.',
+      features: ['Up to 1 hour session', '25–30 edited images', 'Styling guidance + location planning'],
       featured: true,
     },
     {
-      name: 'The Keepsake Collection',
+      name: 'Keepsake Collection',
       price: '$925',
       duration: 'Starting at',
-      description: 'Designed for newborns and milestone sessions, capturing your family\'s newest chapter. Ideal for expecting moms, growing families, and couples wanting a deeper, more styled session.',
+      description: 'An extended session ideal for newborns, milestones and styled family sessions.',
       features: [
-        'Up to 2 hours in-studio (with flexibility for feedings + soothing)',
+        'Up to 2 hours in-studio',
         '2 outfit changes',
         '30–40 edited images',
-        '$50 print credit toward albums or wall art',
-        'Use of studio props and wraps',
+        '$50 print credit',
       ],
     },
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-purple-900 to-slate-900">
-      {/* Hero Section */}
-      <section className="py-24 px-8 bg-gradient-to-b from-slate-800 to-slate-900/50 backdrop-blur-sm">
-        <div className="max-w-6xl mx-auto text-center">
-          <p className="text-sm uppercase tracking-widest text-purple-300 mb-4 font-semibold">Investment</p>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white" style={{ fontFamily: "'Playfair Display', serif" }}>
-            More Than a Photo Session — It's Your Legacy in Focus
+    <div className="min-h-screen bg-white text-gray-900">
+      {/* Top hero - restrained, editorial */}
+      <header className="border-b border-gray-200">
+        <div className="max-w-5xl mx-auto py-14 px-6">
+          <p className="text-xs uppercase tracking-wider text-gray-500 mb-3">Investment</p>
+          <h1 className="text-4xl md:text-5xl font-bold leading-tight" style={{ fontFamily: "'Playfair Display', serif" }}>
+            Investment & Session Options
           </h1>
-          <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            At Jinette Ramos Photography, your investment goes far beyond beautiful images. It's about capturing the stories, emotions, and milestones that make your life uniquely yours.
+          <p className="mt-4 text-base text-gray-700 max-w-2xl">
+            Thoughtfully crafted portrait sessions with a focus on storytelling. Below you'll find clear, transparent options with what each session includes.
           </p>
         </div>
-      </section>
+      </header>
 
-      {/* What's Included */}
-      <section className="py-20 px-8">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white" style={{ fontFamily: "'Playfair Display', serif" }}>
-              What's Included in Every Session
-            </h2>
-            <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-              Every portrait experience includes:
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {[
-              'A pre-session consultation (phone or zoom) to plan your vision and styling',
-              'A relaxed, guided photoshoot in studio or on location',
-              'A private online gallery of professionally edited, high-resolution images',
-              'Print release + access to professional print and product options',
-            ].map((item, index) => (
-              <div key={index} className="bg-gradient-to-br from-purple-600/20 to-pink-600/20 backdrop-blur-sm p-6 rounded-2xl border border-purple-400/30 hover:border-purple-400/60 transition-all duration-300">
-                <div className="flex items-start gap-3">
-                  <span className="text-purple-400 text-xl mt-1 flex-shrink-0">
-                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                  </span>
-                  <p className="text-gray-200 leading-relaxed">{item}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <main className="max-w-6xl mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-14 items-start">
+          {/* Left column — descriptive block (spans one column on desktop) */}
+          <section className="lg:col-span-2">
+            <div className="mb-10">
+              <h2 className="text-2xl font-semibold mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>
+                What's included
+              </h2>
+              <hr className="border-gray-200 mb-6" />
+              <ul className="space-y-4 text-gray-700">
+                <li>Pre-session consultation (phone/Zoom) to plan wardrobe, location, and vision.</li>
+                <li>Guided, relaxed photoshoot either on location or in studio.</li>
+                <li>Secure online gallery with professionally edited, high-resolution images.</li>
+                <li>Print release + optional professional print and product fulfillment.</li>
+              </ul>
+            </div>
 
-      {/* Pricing Packages */}
-      <section className="py-20 px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Session Options
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20 items-start">
-            {pricingPackages.map((pkg) => (
-              <div
-                key={pkg.name}
-                className={`relative rounded-3xl overflow-hidden transition-all duration-500 hover:scale-105 backdrop-blur-sm border ${
-                  pkg.featured
-                    ? 'bg-gradient-to-br from-purple-600 via-pink-600 to-red-600 border-pink-400/60 shadow-2xl shadow-pink-500/50 lg:scale-105'
-                    : 'bg-gradient-to-br from-slate-700/50 to-slate-800/50 border-purple-400/30 shadow-xl hover:border-purple-400/60'
-                }`}
-              >
-                {/* Decorative shape - top right */}
-                <div className="absolute -top-10 -right-10 w-40 h-40 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full blur-3xl"></div>
-                
-                {pkg.featured && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-                    <span className="bg-gradient-to-r from-yellow-300 to-orange-300 text-slate-900 px-6 py-2 rounded-full text-sm font-bold shadow-lg">
-                      ✨ MOST POPULAR ✨
-                    </span>
-                  </div>
-                )}
-                
-                <div className="relative z-10 p-10">
-                  <div className="text-center mb-8">
-                    <h3 className={`text-2xl md:text-3xl font-bold mb-3 ${pkg.featured ? 'text-white' : 'text-white'}`} style={{ fontFamily: "'Playfair Display', serif" }}>
-                      {pkg.name}
-                    </h3>
-                    <p className={`text-sm mb-2 ${pkg.featured ? 'text-white/90' : 'text-gray-300'}`}>
-                      {pkg.duration}
-                    </p>
-                    <div className="mb-6">
-                      <span className={`text-5xl md:text-6xl font-bold ${pkg.featured ? 'text-white' : 'text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-pink-300'}`} style={{ fontFamily: "'Playfair Display', serif" }}>
-                        {pkg.price}
-                      </span>
+            {/* Pricing cards — editorial article style */}
+            <div className="space-y-8">
+              {pricingPackages.map((pkg) => (
+                <article
+                  key={pkg.name}
+                  className={`group border-t border-gray-200 pt-8 pb-6 ${pkg.featured ? 'relative bg-white' : ''}`}
+                >
+                  <div className="flex items-baseline justify-between">
+                    <div>
+                      <h3 className="text-2xl font-serif font-semibold" style={{ fontFamily: "'Playfair Display', serif" }}>
+                        {pkg.name}
+                      </h3>
+                      <p className="text-sm text-gray-500 mt-1">{pkg.duration}</p>
                     </div>
-                    {pkg.description && (
-                      <p className={`text-sm mb-6 ${pkg.featured ? 'text-white/95' : 'text-gray-300'} leading-relaxed`}>
-                        {pkg.description}
-                      </p>
-                    )}
+                    <div className="text-right">
+                      <div className="text-3xl font-bold" style={{ fontFamily: "'Playfair Display', serif" }}>{pkg.price}</div>
+                      {pkg.featured && <div className="text-sm text-yellow-700 mt-1">Most popular</div>}
+                    </div>
                   </div>
-                  <ul className="space-y-4 mb-10">
-                    {pkg.features.map((feature, index) => (
-                      <li key={index} className="flex items-start gap-3">
-                        <span className={`text-xl mt-1 flex-shrink-0 ${pkg.featured ? 'text-yellow-300' : 'text-purple-400'}`}>
-                          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                          </svg>
-                        </span>
-                        <span className={`${pkg.featured ? 'text-white/95' : 'text-gray-300'} leading-relaxed`}>{feature}</span>
+
+                  <p className="mt-4 text-gray-700 max-w-xl leading-relaxed">{pkg.description}</p>
+
+                  <ul className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-700">
+                    {pkg.features.map((f, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <span className="text-gray-400 mt-1">•</span>
+                        <span>{f}</span>
                       </li>
                     ))}
                   </ul>
-                  <button
-                    className={`w-full py-4 rounded-xl font-bold text-lg transition-all duration-300 transform hover:-translate-y-1 ${
-                      pkg.featured
-                        ? 'bg-gradient-to-r from-yellow-300 to-orange-300 hover:from-yellow-200 hover:to-orange-200 text-slate-900 shadow-lg hover:shadow-2xl shadow-yellow-500/50'
-                        : 'bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white shadow-md hover:shadow-lg'
-                    }`}
-                  >
-                    Book Now
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
 
-          {/* Add-Ons Section */}
-          <div className="bg-gradient-to-br from-slate-700/50 to-slate-800/50 backdrop-blur-sm rounded-3xl p-12 shadow-xl border border-purple-400/30">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white" style={{ fontFamily: "'Playfair Display', serif" }}>
-                Add-On Options
-              </h2>
-              <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-                Available with Any Package
-              </p>
+                  <div className="mt-6 flex items-center gap-4">
+                    <button
+                      className={`px-5 py-2 rounded-sm border text-sm font-medium transition-colors ${pkg.featured ? 'bg-black text-white border-black hover:bg-gray-900' : 'text-gray-900 border-gray-300 hover:bg-gray-50'}`}
+                    >
+                      Book now
+                    </button>
+                    <a href="#contact" className="text-sm text-gray-500 underline">Have questions?</a>
+                  </div>
+                </article>
+              ))}
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="flex items-start gap-5 p-6 rounded-2xl bg-gradient-to-br from-purple-600/10 to-pink-600/10 hover:from-purple-600/20 hover:to-pink-600/20 border border-purple-400/20 hover:border-purple-400/40 transition-all duration-300">
-                <div className="text-4xl flex-shrink-0">📸</div>
-                <div>
-                  <h3 className="font-bold text-xl mb-2 text-white">Additional images</h3>
-                  <p className="text-gray-300 leading-relaxed">$25 each</p>
+          </section>
+
+          {/* Right column — small editorial sidebar */}
+          <aside className="hidden lg:block">
+            <div className="sticky top-24">
+              <div className="border border-gray-100 p-6 rounded-sm bg-gray-50">
+                <h4 className="text-sm font-semibold mb-2">Quick facts</h4>
+                <p className="text-sm text-gray-700">Sessions are scheduled with care; deposits hold dates. Print and album pricing available on request.</p>
+                <hr className="my-4 border-gray-200" />
+                <div className="text-sm">
+                  <p className="font-medium">Studio location</p>
+                  <p className="text-gray-600">Allentown, PA</p>
                 </div>
               </div>
-              <div className="flex items-start gap-5 p-6 rounded-2xl bg-gradient-to-br from-purple-600/10 to-pink-600/10 hover:from-purple-600/20 hover:to-pink-600/20 border border-purple-400/20 hover:border-purple-400/40 transition-all duration-300">
-                <div className="text-4xl flex-shrink-0">🖼️</div>
-                <div>
-                  <h3 className="font-bold text-xl mb-2 text-white">Photo album</h3>
-                  <p className="text-gray-300 leading-relaxed">Starting at $350</p>
-                </div>
+            </div>
+          </aside>
+        </div>
+
+        {/* Add-ons area — subtle card style */}
+        <section className="mt-16">
+          <div className="border-t border-gray-200 pt-10">
+            <h3 className="text-xl font-semibold mb-4">Add-On Options</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-700">
+              <div className="p-4 bg-white border border-gray-100">
+                <div className="font-medium">Additional images</div>
+                <div className="text-sm text-gray-600">$25 each</div>
               </div>
-              <div className="flex items-start gap-5 p-6 rounded-2xl bg-gradient-to-br from-purple-600/10 to-pink-600/10 hover:from-purple-600/20 hover:to-pink-600/20 border border-purple-400/20 hover:border-purple-400/40 transition-all duration-300">
-                <div className="text-4xl flex-shrink-0">🖼️</div>
-                <div>
-                  <h3 className="font-bold text-xl mb-2 text-white">Canvas print</h3>
-                  <p className="text-gray-300 leading-relaxed">Starting at $175</p>
-                </div>
+              <div className="p-4 bg-white border border-gray-100">
+                <div className="font-medium">Photo album</div>
+                <div className="text-sm text-gray-600">Starting at $350</div>
               </div>
-              <div className="flex items-start gap-5 p-6 rounded-2xl bg-gradient-to-br from-purple-600/10 to-pink-600/10 hover:from-purple-600/20 hover:to-pink-600/20 border border-purple-400/20 hover:border-purple-400/40 transition-all duration-300">
-                <div className="text-4xl flex-shrink-0">📍</div>
-                <div>
-                  <h3 className="font-bold text-xl mb-2 text-white">Travel outside Lehigh Valley</h3>
-                  <p className="text-gray-300 leading-relaxed">Custom quote</p>
-                </div>
+              <div className="p-4 bg-white border border-gray-100">
+                <div className="font-medium">Canvas print</div>
+                <div className="text-sm text-gray-600">Starting at $175</div>
+              </div>
+              <div className="p-4 bg-white border border-gray-100">
+                <div className="font-medium">Travel outside Lehigh Valley</div>
+                <div className="text-sm text-gray-600">Custom quote</div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
     </div>
   );
 };
