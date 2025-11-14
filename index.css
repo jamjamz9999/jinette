@@ -7,6 +7,7 @@
   --viewport-scale: 1;
   --design-width: 1920;
   --design-height: 1080;
+  --pixel-ratio: 1;
 }
 
 /* Reset body and html to remove scrollbars and margins */
@@ -38,6 +39,80 @@ html, body {
   overflow: visible;
   position: relative;
   background-color: #fff;
+  /* GPU acceleration for smoother scaling */
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  /* High-quality image rendering during scaling */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Image Rendering Optimization - Prevent quality loss on mobile */
+img, picture, svg, video {
+  /* High-quality image rendering */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  /* GPU acceleration for transforms */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  /* Prevent blurring during scaling */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Enhanced image quality for scaled content */
+.viewport-fit-container img,
+.viewport-fit-container picture,
+.viewport-fit-container svg,
+.viewport-fit-container video {
+  /* Maximum quality rendering */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: high-quality;
+  /* Smooth scaling with hardware acceleration */
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* High-DPI (Retina) display optimization */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .viewport-fit-container img,
+  .viewport-fit-container picture,
+  .gallery-image {
+    /* Better rendering on high-DPI displays */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: auto;
+  }
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+  .viewport-fit-container {
+    /* Enable subpixel rendering on mobile */
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+  }
+  
+  .viewport-fit-container img,
+  .gallery-image {
+    /* Prevent image degradation on mobile zoom */
+    max-width: none;
+    image-rendering: -webkit-optimize-contrast;
+  }
+}
+
+/* Background images optimization */
+.header::before,
+.split-image-left,
+.split-image-right {
+  /* Prevent pixelation of background images */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  /* GPU acceleration */
+  transform: translateZ(0);
+  will-change: background-position;
 }
 
 /* Custom fonts and typography */
@@ -192,6 +267,13 @@ html, body {
   border-radius: 12px;
   animation: breatheBrightness 6s ease-in-out infinite;
   transition: transform 0.5s ease;
+  /* Enhanced image quality */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: high-quality;
+  /* GPU acceleration */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 /* Animated Gradient Button */

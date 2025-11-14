@@ -476,7 +476,7 @@ const App = () => {
   const [showAdminLogin, setShowAdminLogin] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Viewport scaling resize handler
+  // Viewport scaling resize handler with optimizations for image rendering
   useEffect(() => {
     const updateScale = () => {
       const designWidth = 1920;
@@ -491,16 +491,33 @@ const App = () => {
       
       // Update CSS variable
       document.documentElement.style.setProperty('--viewport-scale', scale);
+      
+      // Set pixel ratio for high-DPI displays (Retina, etc.)
+      const pixelRatio = window.devicePixelRatio || 1;
+      document.documentElement.style.setProperty('--pixel-ratio', pixelRatio);
+    };
+
+    // Debounce resize for better performance
+    let resizeTimeout;
+    const debouncedUpdateScale = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(updateScale, 16); // ~60fps
     };
 
     // Initial scale
     updateScale();
 
-    // Update on resize
-    window.addEventListener('resize', updateScale);
+    // Update on resize with debounce for smoother performance
+    window.addEventListener('resize', debouncedUpdateScale);
+    // Update on orientation change (mobile)
+    window.addEventListener('orientationchange', updateScale);
     
     // Cleanup
-    return () => window.removeEventListener('resize', updateScale);
+    return () => {
+      window.removeEventListener('resize', debouncedUpdateScale);
+      window.removeEventListener('orientationchange', updateScale);
+      clearTimeout(resizeTimeout);
+    };
   }, []);
 
   return (
