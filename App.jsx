@@ -509,6 +509,15 @@ const App = () => {
       // Store viewport dimensions for reference
       document.documentElement.style.setProperty('--viewport-width', viewportWidth + 'px');
       document.documentElement.style.setProperty('--viewport-height', viewportHeight + 'px');
+      
+      // Log scaling information for testing/debugging
+      console.log('🔍 Viewport Scaling Update:', {
+        viewport: `${viewportWidth}x${viewportHeight}`,
+        scaleX: `${scaleX.toFixed(4)} (${(scaleX * 100).toFixed(2)}%)`,
+        scaleY: `${scaleY.toFixed(4)} (${(scaleY * 100).toFixed(2)}%)`,
+        appliedScale: `${scale.toFixed(4)} (${scalePercentage}%)`,
+        pixelRatio: pixelRatio
+      });
     };
 
     // Immediate update on mount for instant scaling
