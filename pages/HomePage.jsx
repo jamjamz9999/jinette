@@ -187,26 +187,22 @@ const HomePage = () => {
             </p>
           </div>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" role="list">
-            {galleryHighlights.map((photo) => (
-              <article key={photo.id} className="group rounded-3xl overflow-hidden border border-gray-200 bg-white shadow-sm hover:shadow-lg transition-shadow duration-300">
-                <div className="relative h-64 overflow-hidden">
-                  <img
-                    src={photo.src || photo.thumbnail}
-                    alt={photo.title}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/50" />
-                  <div className="absolute bottom-3 sm:bottom-5 left-3 sm:left-5 right-3 sm:right-5 rounded-xl sm:rounded-2xl bg-white/90 px-3 sm:px-4 py-2 sm:py-3 shadow-md shadow-black/10">
-                    <p className="text-[10px] sm:text-xs uppercase tracking-[0.35em] text-gray-500">{photo.category}</p>
-                    <h3 className="mt-1 sm:mt-2 text-base sm:text-lg font-semibold text-black">{photo.title}</h3>
-                  </div>
+          <div className="gallery-top-polaroids">
+            {/* Show 5 polaroid highlights: 3 on top row, 2 on second row */}
+            <div className="gallery-grid-polaroids" role="list">
+              {GALLERY_PHOTOS.slice(0,5).map((photo, i) => (
+                <div key={photo.id} className={`polaroid-wrapper ${['tilt-1','tilt-2','tilt-3','tilt-4','tilt-5'][i] || ''}`}>
+                  <article className={`polaroid ${i===0? 'size-lg':''} `} role="listitem">
+                    <div className="polaroid-frame">
+                      <img src={photo.src || photo.thumbnail} alt={photo.title} className="polaroid-img" />
+                      <div className="polaroid-overlay" />
+                    </div>
+                    <div className="polaroid-caption">{photo.title}</div>
+                  </article>
                 </div>
-                <div className="px-4 sm:px-5 py-4 sm:py-6 text-xs sm:text-sm text-gray-600 leading-relaxed">
-                  {photo.description?.slice(0, 140) || 'Fine art photography crafted with passion and precision.'}
-                </div>
-              </article>
-            ))}
+              ))}
+            </div>
+            <div style={{height:12}} />
           </div>
         </div>
       </section>

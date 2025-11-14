@@ -54,39 +54,54 @@ const PhotographyPage = ({ onImageClick, isAdmin = false }) => {
           ))}
         </div>
 
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {filteredPhotos.map((photo) => (
-            <div
-              key={photo.id}
-              className="group relative rounded-2xl overflow-hidden h-64 cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200/50 hover:border-gray-300/80"
-              onClick={() => handleImageClick(photo.id)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(event) => (event.key === 'Enter' || event.key === ' ') && handleImageClick(photo.id)}
-              style={{
-                boxShadow: '0 8px 25px 0 rgba(0, 0, 0, 0.15)'
-              }}
-            >
-              <img 
-                src={photo.thumbnail || photo.src} 
-                alt={photo.title} 
-                className="gallery-image w-full h-full object-cover transition-transform duration-700 group-hover:scale-125" 
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/0 via-transparent to-transparent opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
-              <div className="absolute left-5 bottom-5 text-white z-10 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
-                <h3 className="text-xl font-bold mb-1 drop-shadow-lg">{photo.title}</h3>
-                <p className="text-sm text-white/90 capitalize font-medium">{photo.category}</p>
-              </div>
-              <div className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform scale-0 group-hover:scale-100">
-                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                </svg>
+        {/* Gallery Grid — editorial two-column layout on large screens */}
+        {filteredPhotos.length > 0 ? (
+          <div className="gallery-layout">
+            {/* Left: feature image */}
+            <div className="gallery-left">
+              {filteredPhotos[0] && (
+                  <div
+                    className="group relative overflow-visible cursor-pointer transition-shadow duration-500"
+                    onClick={() => handleImageClick(filteredPhotos[0].id)}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(event) => (event.key === 'Enter' || event.key === ' ') && handleImageClick(filteredPhotos[0].id)}
+                  >
+                    <figure className="polaroid size-lg">
+                      <div className="polaroid-frame">
+                        <img src={filteredPhotos[0].thumbnail || filteredPhotos[0].src} alt={filteredPhotos[0].title} className="polaroid-img" />
+                        <div className="polaroid-overlay" />
+                      </div>
+                      <figcaption className="polaroid-caption">{filteredPhotos[0].title}</figcaption>
+                    </figure>
+                  </div>
+                )}
+            </div>
+
+            {/* Right: stacked grid of remaining images */}
+            <div className="gallery-right">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {filteredPhotos.slice(1).map((photo, idx) => {
+                  const sizes = ['size-sm','size-md','size-sm','size-md','size-sm'];
+                  const sizeClass = sizes[idx % sizes.length] || 'size-md';
+                  return (
+                    <div key={photo.id} className="group relative overflow-visible cursor-pointer" onClick={() => handleImageClick(photo.id)} role="button" tabIndex={0} onKeyDown={(event) => (event.key === 'Enter' || event.key === ' ') && handleImageClick(photo.id)}>
+                      <figure className={`polaroid ${sizeClass}`}>
+                        <div className="polaroid-frame">
+                          <img src={photo.thumbnail || photo.src} alt={photo.title} className="polaroid-img" />
+                          <div className="polaroid-overlay" />
+                        </div>
+                        <figcaption className="polaroid-caption">{photo.title}</figcaption>
+                      </figure>
+                    </div>
+                  );
+                })}
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ) : (
+          <div className="text-center text-gray-500">No images found.</div>
+        )}
       </div>
     </PageWrapper>
   );

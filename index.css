@@ -154,6 +154,20 @@
   border-radius: 12px;
   animation: breatheBrightness 6s ease-in-out infinite;
   transition: transform 0.5s ease;
+  /* increase overall brightness/contrast for gallery images */
+  filter: brightness(1.08) contrast(1.12) saturate(1.03);
+}
+
+/* Feature image sizing for editorial layout */
+.gallery-layout { display: grid; gap: 24px; grid-template-columns: 1fr; }
+.gallery-left, .gallery-right { width: 100%; }
+.feature-image { height: 640px; border-radius: 12px; }
+
+@media (min-width: 1024px) {
+  .gallery-layout { grid-template-columns: 1.2fr 0.8fr; align-items: start; }
+  .gallery-left { position: relative; }
+  .feature-image { height: 100%; min-height: 640px; }
+  .gallery-right .group { height: 260px; }
 }
 
 /* Animated Gradient Button */
@@ -398,6 +412,350 @@
 .text-gray-800 {
   color: #1f2937;
 }
+
+/* Site typography and color tokens for Pricing page */
+:root {
+  --brand-ink: #0f172a; /* deep navy */
+  --muted: #6b7280;
+  --accent-1: #f58529; /* instagram-like gradient start */
+  --accent-2: #dd2a7b;
+  --accent-3: #8134af;
+}
+
+/* Headings use a display serif for an editorial look */
+.heading-serif {
+  font-family: 'Playfair Display', serif;
+}
+
+.display-serif {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+/* Pricing table styles (semantic table) */
+.pricing-table-wrapper { width: 100%; }
+.pricing-table { width: 100%; border-collapse: collapse; border: 1px solid #e6e9ef; background: #fff; }
+.pricing-table thead th { padding: 1.25rem; text-align: center; border-right: 1px solid #e6e9ef; }
+.pricing-table thead .feature-head { text-align: left; background: #fff; color: var(--muted); font-weight: 600; }
+.pricing-table tbody th.feature-cell { padding: 1.25rem 1.5rem; background: #fafafa; text-align: left; vertical-align: middle; font-weight: 600; color: var(--brand-ink); border-right: 1px solid #e6e9ef; }
+.pricing-table tbody td.value-cell { padding: 1.25rem 1.5rem; text-align: center; vertical-align: middle; border-right: 1px solid #e6e9ef; border-top: 1px solid #e6e9ef; }
+.pricing-table tbody tr:nth-child(even) td.value-cell { background: #fbfbfd; }
+
+.plan-head { color: white; position: relative; }
+/* Polaroid-style gallery cards */
+.polaroid {
+  display: inline-block;
+  background: #fff;
+  padding: 12px 12px 28px 12px; /* extra bottom for caption */
+  border: 1px solid rgba(10,10,10,0.06);
+  box-shadow: 0 18px 40px rgba(2,6,23,0.12);
+  margin: 12px;
+  transform-origin: center;
+}
+.polaroid-frame {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  width: 340px;
+  height: 220px;
+}
+.polaroid-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(1.12) contrast(1.08);
+  transition: transform 0.6s ease, filter 0.25s ease;
+}
+.polaroid-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 12px 24px rgba(0,0,0,0.09);
+}
+.polaroid-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 100%);
+  opacity: 0.2; /* glossy dark overlay 20% by default */
+  transition: opacity 220ms ease, background 220ms ease;
+}
+.polaroid:hover .polaroid-overlay,
+.polaroid:active .polaroid-overlay {
+  opacity: 0.28; /* slightly darker on hover/press */
+}
+.polaroid-caption {
+  margin-top: 8px;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 16px;
+  color: #111;
+  text-align: center;
+  letter-spacing: 0.2px;
+}
+
+/* Varying sizes for gallery (non-uniform layout) */
+.polaroid.size-sm .polaroid-frame { width: 240px; height: 160px }
+.polaroid.size-md .polaroid-frame { width: 320px; height: 220px }
+.polaroid.size-lg .polaroid-frame { width: 420px; height: 300px }
+
+/* Slight rotation helpers for the homepage cluster */
+.tilt-1 { transform: rotate(-5deg); }
+.tilt-2 { transform: rotate(4deg); }
+.tilt-3 { transform: rotate(-3deg); }
+.tilt-4 { transform: rotate(6deg); }
+.tilt-5 { transform: rotate(-2deg); }
+
+/* Gallery grid helpers */
+.gallery-grid-polaroids { display:flex; flex-wrap:wrap; justify-content:center; gap:18px; }
+.gallery-grid-polaroids.row-centered { justify-content:center; }
+
+/* Make polaroid responsive */
+@media (max-width: 1024px) {
+  .polaroid-frame { width: 90vw; height: 56vw; max-width: 420px }
+  .polaroid { margin: 10px auto }
+  .polaroid.size-sm .polaroid-frame { width: 86vw }
+}
+
+/* Target existing gallery-image usage for increased contrast/brightness and hover darken */
+.gallery-image { filter: brightness(1.12) contrast(1.08); transition: transform 0.6s ease, filter 0.24s ease; }
+.gallery-image:hover { transform: scale(1.03); }
+
+/* Ensure inner overlay on existing group elements matches requested 10% darkness on hover */
+.group .absolute.inset-0.bg-gradient-to-t.from-black\/60 { background: linear-gradient(to top, rgba(0,0,0,0.1), rgba(0,0,0,0)); }
+.pricing-plan-name { font-family: 'Playfair Display', serif; font-size: 1.125rem; font-weight: 600; }
+.pricing-price { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; display:block; margin-top:0.4rem; line-height:1; }
+
+/* vertical separators between plan columns */
+.pricing-table thead th + th,
+.pricing-table tbody td + td { border-left: 1px solid #e6e9ef; }
+
+/* featured plan emphasis */
+.plan-featured { box-shadow: 0 6px 18px rgba(2,6,23,0.12); transform: translateY(-4px); }
+.plan-featured .pricing-plan-name { font-weight: 700; }
+
+/* small 'Most popular' ribbon */
+.ribbon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  border-radius: 6px;
+  backdrop-filter: blur(4px);
+}
+
+/* Plan header flat colors (already defined earlier) */
+.header-plan-mini { background: #ff7a1a; }
+.header-plan-signature { background: #0b60c6; }
+.header-plan-keepsake { background: #2b7a3a; }
+
+/* Slight tints for plan value cells (subtle) */
+.plan-mini { background: rgba(255,122,26,0.06); }
+.plan-signature { background: rgba(11,96,198,0.05); }
+.plan-keepsake { background: rgba(43,122,58,0.05); }
+
+/* Table CTA button alignment */
+.table-book-btn { padding: 0.5rem 0.9rem; border-radius: 8px; color: white; font-weight:700; }
+.table-book-btn--mini { background: #ff7a1a; }
+.table-book-btn--signature { background: #0b60c6; }
+.table-book-btn--keepsake { background: #2b7a3a; }
+
+/* SVG button (image) styling: sharp corners, consistent height */
+.svg-book-btn {
+  display: inline-block;
+  height: 42px;
+  width: auto;
+  border: none;
+  padding: 0;
+  margin: 0;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.table-book-link { display: inline-block; }
+
+/* Remove rounded corners on image buttons and ensure no extra background */
+.table-book-link img { border-radius: 0; display:block; }
+
+/* Booking banner spacing and no rounded corners for contained elements */
+.black-cta { margin-left: 50%; transform: translateX(-50%); width: 100vw; left: 50%; position: relative; right: 50%; background: linear-gradient(180deg, rgba(10,10,10,0.95), rgba(6,6,6,0.92)); color: #fff; padding: 28px 0; box-shadow: 0 20px 48px rgba(2,6,23,0.18); }
+.black-cta .container-inner { position: relative; z-index: 2; }
+
+/* Ensure svg buttons stack nicely on small screens */
+@media (max-width: 640px) {
+  .svg-book-btn { height: 36px; }
+  .black-cta { padding: 20px 0; }
+  .black-cta .flex { gap: 8px; }
+}
+
+@media (max-width: 768px) {
+  .pricing-plan-name { font-size: 1rem; }
+  .pricing-price { font-size: 1.25rem; }
+  .pricing-table thead th, .pricing-table tbody td, .pricing-table tbody th { padding: 0.75rem; }
+}
+
+/* Insta-inspired gradient CTA */
+.insta-cta {
+  background: linear-gradient(90deg, var(--accent-1), var(--accent-2), var(--accent-3));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  position: relative;
+}
+
+.insta-cta-button {
+  background: linear-gradient(90deg, var(--accent-1) 0%, var(--accent-2) 50%, var(--accent-3) 100%);
+  color: white;
+  padding: 0.6rem 1.1rem;
+  border-radius: 10px;
+  font-weight: 700;
+  box-shadow: 0 12px 24px rgba(129,52,175,0.12);
+}
+
+.insta-cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 30px rgba(129,52,175,0.18);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .pricing-table {
+    grid-template-columns: 1fr 1fr;
+  }
+  .pricing-table .header-cell {
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .pricing-table {
+    grid-template-columns: 1fr;
+  }
+  .pricing-table .cell { padding: 0.9rem; }
+}
+
+/* Plan-specific feature cell colors (to the right of features) */
+.pricing-table .cell.plan-mini {
+  background: linear-gradient(90deg, rgba(246,150,12,0.08), rgba(246,150,12,0.04));
+}
+.pricing-table .cell.plan-signature {
+  background: linear-gradient(90deg, rgba(125,211,252,0.08), rgba(125,211,252,0.04));
+}
+.pricing-table .cell.plan-keepsake {
+  background: linear-gradient(90deg, rgba(110,231,183,0.08), rgba(110,231,183,0.04));
+}
+
+/* Booking banner (black gradient) */
+.black-cta {
+  margin-top: 2rem;
+  /* make full-bleed across viewport while inside a centered container */
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+  padding: 2.5rem 0; /* vertical padding; horizontal handled by inner container */
+  border-radius: 0; /* remove rounded corners */
+  color: white;
+  /* layered backgrounds for glossy glass effect */
+  background-image:
+    linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 10%, rgba(255,255,255,0) 12%),
+    radial-gradient(1200px 300px at 10% 20%, rgba(255,255,255,0.035), rgba(255,255,255,0)),
+    linear-gradient(180deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.82) 45%, rgba(10,10,10,0.85) 100%);
+  background-blend-mode: overlay, overlay, normal;
+  box-shadow: 0 18px 50px rgba(2,6,23,0.65), inset 0 1px 0 rgba(255,255,255,0.04);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+  backdrop-filter: blur(8px) saturate(120%);
+  border-top: 1px solid rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(0,0,0,0.45);
+}
+.black-cta h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75rem;
+  margin-bottom: 0.25rem;
+}
+.black-cta p {
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 0.5rem;
+}
+
+/* inner container keeps content centered and constrained */
+.black-cta .container-inner { max-width: 72rem; }
+
+/* Book buttons in banner */
+.book-btn {
+  padding: 0.6rem 1.1rem;
+  border-radius: 999px;
+  font-weight: 700;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.book-btn:active { transform: translateY(1px); }
+.book-btn--mini { background: linear-gradient(90deg,#f58529,#ff9a50); box-shadow: 0 10px 20px rgba(245,133,41,0.18); }
+.book-btn--signature { background: linear-gradient(90deg,#60a5fa,#38bdf8); box-shadow: 0 10px 20px rgba(56,189,248,0.12); }
+.book-btn--keepsake { background: linear-gradient(90deg,#34d399,#10b981); box-shadow: 0 10px 20px rgba(16,185,129,0.12); }
+
+/* Table book buttons */
+.table-book-btn {
+  padding: 0.5rem 0.9rem;
+  border-radius: 10px;
+  color: white;
+  font-weight: 700;
+  border: none;
+}
+.table-book-btn--mini { background: linear-gradient(90deg,#f58529,#ff9a50); }
+.table-book-btn--signature { background: linear-gradient(90deg,#60a5fa,#38bdf8); }
+.table-book-btn--keepsake { background: linear-gradient(90deg,#34d399,#10b981); }
+
+/* Small adjustments for the pricing table to keep visible grid */
+.pricing-table .cell { border-right: 1px solid #e6e9ef; }
+.pricing-table .cell.header-cell { border-right: 1px solid #e6e9ef; }
+
+/* Colored header rows for each plan (only the top header cells) */
+.header-plan-mini {
+  background: #ff7a1a; /* bright orange */
+  color: white;
+}
+.header-plan-signature {
+  background: #0b60c6; /* royal blue */
+  color: white;
+}
+.header-plan-keepsake {
+  background: #2b7a3a; /* snake green */
+  color: white;
+}
+
+.header-plan-mini .pricing-plan-name,
+.header-plan-signature .pricing-plan-name,
+.header-plan-keepsake .pricing-plan-name {
+  color: white;
+}
+
+/* Price styling in header cells */
+.pricing-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1;
+  padding: 0.25rem 0.6rem;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+/* Ensure each plan's price has a slightly darker flat background for contrast */
+.header-plan-mini .pricing-price { background: #e05f00; color: white; }
+.header-plan-signature .pricing-price { background: #084fa8; color: white; }
+.header-plan-keepsake .pricing-price { background: #24672d; color: white; }
+
+/* Make sure value cells keep lighter plan tint (only feature/value rows use these) */
+.plan-mini { background: rgba(255, 122, 26, 0.08); }
+.plan-signature { background: rgba(11, 96, 198, 0.06); }
+.plan-keepsake { background: rgba(43, 122, 58, 0.06); }
 
 .shadow-sm {
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);

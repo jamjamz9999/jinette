@@ -1,159 +1,145 @@
 import React from 'react';
 
 const PricingPage = () => {
-  const pricingPackages = [
+  const features = [
+    'Session length',
+    'Edited images',
+    'Outfits / changes',
+    'Location',
+    'Pre-session planning',
+  ];
+
+  const plans = [
     {
-      name: 'Mini Story Session',
+      name: 'Mini Story',
       price: '$350',
-      duration: 'Starting at',
-      description:
-        'A short, focused session capturing authentic moments — great for families, couples, or seasonal minis.',
-      features: ['25 minutes of session time', '15 edited images', 'One location'],
+      values: ['25 min', '15', '1', 'One location', 'Phone/Zoom'],
     },
     {
-      name: 'Signature Portrait Experience',
+      name: 'Signature',
       price: '$675',
-      duration: 'Starting at',
-      description:
-        'A storytelling session for families or couples who want a fuller, curated experience.',
-      features: ['Up to 1 hour session', '25–30 edited images', 'Styling guidance + location planning'],
+      values: ['60 min', '25–30', '1-2', 'Studio or location', 'Phone/Zoom + styling'],
       featured: true,
     },
     {
-      name: 'Keepsake Collection',
+      name: 'Keepsake',
       price: '$925',
-      duration: 'Starting at',
-      description: 'Extended session for milestones and heirloom products.',
-      features: ['Up to 2 hours', '2 outfit changes', '30–40 edited images'],
+      values: ['120 min', '30–40', '2', 'Multiple locations', 'Full planning'],
     },
   ];
 
   return (
-    <div className="min-h-screen bg-white text-gray-900">
+    <div className="min-h-screen bg-gray-50 text-gray-900">
       <header className="border-b border-gray-200">
-        <div className="max-w-5xl mx-auto py-14 px-6">
+        <div className="max-w-6xl mx-auto py-12 px-6">
           <p className="text-xs uppercase tracking-wider text-gray-500 mb-3">Investment</p>
-          <h1
-            className="text-4xl md:text-5xl font-bold leading-tight"
-            style={{ fontFamily: "'Playfair Display', serif" }}
-          >
-            Investment & Session Options
-          </h1>
-          <p className="mt-4 text-base text-gray-700 max-w-2xl">
-            Thoughtfully crafted portrait sessions with a focus on storytelling.
-          </p>
+          <h1 className="text-4xl md:text-5xl font-bold heading-serif">Pricing & Session Options</h1>
+          <p className="mt-4 text-base text-gray-700 max-w-2xl">Thoughtfully crafted portrait sessions — editorial, timeless, and designed to become heirlooms.</p>
         </div>
       </header>
 
-      <main className="max-w-6xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-14 items-start">
-          <section className="lg:col-span-2">
-            <div className="mb-10">
-              <h2
-                className="text-2xl font-semibold mb-3"
-                style={{ fontFamily: "'Playfair Display', serif" }}
-              >
-                What's included
-              </h2>
-              <hr className="border-gray-200 mb-6" />
-              <ul className="space-y-4 text-gray-700">
-                <li>Pre-session consultation (phone/Zoom)</li>
-                <li>Guided photoshoot on location or in studio</li>
-                <li>Secure online gallery with edited images</li>
-                <li>Print release + professional printing options</li>
-              </ul>
+      <main className="max-w-6xl mx-auto px-6 py-12">
+        <section className="mb-8">
+          <div className="max-w-4xl">
+            <h2 className="text-2xl font-semibold mb-3 display-serif">What's included</h2>
+            <p className="text-gray-700 mb-4">Every session includes a pre-session consultation, professional editing, and a private online gallery.</p>
+          </div>
+        </section>
+
+        <section className="mb-12">
+          <div className="pricing-table-wrapper shadow-sm overflow-x-auto">
+            <table className="pricing-table" role="table" aria-label="Pricing options">
+              <thead>
+                <tr>
+                  <th className="feature-head" scope="col">Features</th>
+                  {plans.map((p) => {
+                    const headerClass = p.name.toLowerCase().includes('mini')
+                      ? 'header-plan-mini'
+                      : p.name.toLowerCase().includes('signature') || p.featured
+                      ? 'header-plan-signature'
+                      : 'header-plan-keepsake';
+                    const featuredClass = p.featured ? 'plan-featured' : '';
+                    return (
+                      <th key={p.name} scope="col" className={`plan-head ${headerClass} ${featuredClass}`}>
+                        {p.featured && <div className="ribbon">Most popular</div>}
+                        <div className="pricing-plan-name">{p.name}</div>
+                        <div className="pricing-price">{p.price}</div>
+                      </th>
+                    );
+                  })}
+                </tr>
+              </thead>
+
+              <tbody>
+                {features.map((feat, rIdx) => (
+                  <tr key={`row-${rIdx}`}>
+                    <th scope="row" className="feature-cell">{feat}</th>
+                    {plans.map((p, cIdx) => {
+                      const planClass = p.name.toLowerCase().includes('mini') ? 'plan-mini' : p.featured ? 'plan-signature' : 'plan-keepsake';
+                      const featuredClass = p.featured ? 'plan-featured' : '';
+                      return (
+                        <td key={`val-${rIdx}-${cIdx}`} className={`value-cell ${planClass} ${featuredClass}`}>{p.values[rIdx]}</td>
+                      );
+                    })}
+                  </tr>
+                ))}
+
+                <tr>
+                  <th className="feature-cell" scope="row">&nbsp;</th>
+                  {plans.map((p) => {
+                    const slug = p.name.toLowerCase().includes('mini') ? 'mini' : p.featured ? 'signature' : 'keepsake';
+                    return (
+                      <td key={`cta-${p.name}`} className="value-cell text-center">
+                        <a href="/contact" className="table-book-link" aria-label={`Book ${p.name}`}>
+                          <img src={`/icons/book-${slug}.svg`} alt={`Book ${p.name}`} className="svg-book-btn" />
+                        </a>
+                      </td>
+                    );
+                  })}
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        {/* Booking banner removed from here and re-inserted below (closer to footer) */}
+
+        <section>
+          <h3 className="text-xl font-semibold mb-4 display-serif">Add-On Options</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-700">
+            <div className="p-4 bg-white border border-gray-100">
+              <div className="font-medium">Additional images</div>
+              <div className="text-sm text-gray-600">$25 each</div>
             </div>
-
-            <div className="space-y-8">
-              {pricingPackages.map((pkg) => (
-                <article
-                  key={pkg.name}
-                  className={`group border-t border-gray-200 pt-8 pb-6 ${pkg.featured ? 'relative bg-white' : ''}`}
-                >
-                  <div className="flex items-baseline justify-between">
-                    <div>
-                      <h3
-                        className="text-2xl font-serif font-semibold"
-                        style={{ fontFamily: "'Playfair Display', serif" }}
-                      >
-                        {pkg.name}
-                      </h3>
-                      <p className="text-sm text-gray-500 mt-1">{pkg.duration}</p>
-                    </div>
-                    <div className="text-right">
-                      <div
-                        className="text-3xl font-bold"
-                        style={{ fontFamily: "'Playfair Display', serif" }}
-                      >
-                        {pkg.price}
-                      </div>
-                    </div>
-                  </div>
-
-                  <p className="mt-4 text-gray-700 max-w-xl leading-relaxed">{pkg.description}</p>
-
-                  <ul className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-700">
-                    {pkg.features.map((f, i) => (
-                      <li key={i} className="flex items-start gap-3">
-                        <span className="text-gray-400 mt-1">•</span>
-                        <span>{f}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="mt-6 flex items-center gap-4">
-                    <button
-                      className={`px-5 py-2 rounded-sm border text-sm font-medium transition-colors ${
-                        pkg.featured
-                          ? 'bg-black text-white border-black hover:bg-gray-900'
-                          : 'text-gray-900 border-gray-300 hover:bg-gray-50'
-                      }`}
-                    >
-                      Book now
-                    </button>
-                    <a href="#contact" className="text-sm text-gray-500 underline">
-                      Have questions?
-                    </a>
-                  </div>
-                </article>
-              ))}
+            <div className="p-4 bg-white border border-gray-100">
+              <div className="font-medium">Photo album</div>
+              <div className="text-sm text-gray-600">Starting at $350</div>
             </div>
-          </section>
+            <div className="p-4 bg-white border border-gray-100">
+              <div className="font-medium">Canvas print</div>
+              <div className="text-sm text-gray-600">Starting at $175</div>
+            </div>
+            <div className="p-4 bg-white border border-gray-100">
+              <div className="font-medium">Travel outside Lehigh Valley</div>
+              <div className="text-sm text-gray-600">Custom quote</div>
+            </div>
+          </div>
+        </section>
 
-          <aside className="hidden lg:block">
-            <div className="sticky top-24">
-              <div className="border border-gray-100 p-6 rounded-sm bg-gray-50">
-                <h4 className="text-sm font-semibold mb-2">Quick facts</h4>
-                <p className="text-sm text-gray-700">Deposits hold dates. Print and album pricing available on request.</p>
-                <hr className="my-4 border-gray-200" />
-                <div className="text-sm">
-                  <p className="font-medium">Studio location</p>
-                  <p className="text-gray-600">Allentown, PA</p>
+        {/* New: full-bleed booking banner placed lower on the page (above footer) */}
+        <section>
+          <div className="black-cta mt-12 mb-12">
+            <div className="container-inner max-w-6xl mx-auto px-6">
+              <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+                <div>
+                  <h2 className="text-2xl font-semibold heading-serif">BOOK ME NOW</h2>
+                  <p className="mt-1">10% deposit required and you are good to go.</p>
                 </div>
-              </div>
-            </div>
-          </aside>
-        </div>
-
-        <section className="mt-16">
-          <div className="border-t border-gray-200 pt-10">
-            <h3 className="text-xl font-semibold mb-4">Add-On Options</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-700">
-              <div className="p-4 bg-white border border-gray-100">
-                <div className="font-medium">Additional images</div>
-                <div className="text-sm text-gray-600">$25 each</div>
-              </div>
-              <div className="p-4 bg-white border border-gray-100">
-                <div className="font-medium">Photo album</div>
-                <div className="text-sm text-gray-600">Starting at $350</div>
-              </div>
-              <div className="p-4 bg-white border border-gray-100">
-                <div className="font-medium">Canvas print</div>
-                <div className="text-sm text-gray-600">Starting at $175</div>
-              </div>
-              <div className="p-4 bg-white border border-gray-100">
-                <div className="font-medium">Travel outside Lehigh Valley</div>
-                <div className="text-sm text-gray-600">Custom quote</div>
+                <div className="flex items-center gap-3">
+                  <a href="/contact" aria-label="Book Mini Story"><img src="/icons/book-mini.svg" alt="Book Mini Story" className="svg-book-btn" /></a>
+                  <a href="/contact" aria-label="Book Signature"><img src="/icons/book-signature.svg" alt="Book Signature" className="svg-book-btn" /></a>
+                  <a href="/contact" aria-label="Book Keepsake"><img src="/icons/book-keepsake.svg" alt="Book Keepsake" className="svg-book-btn" /></a>
+                </div>
               </div>
             </div>
           </div>
