@@ -618,8 +618,12 @@ const App = () => {
           <nav className="flex items-center justify-center relative" style={{ marginTop: '45px' }}>
             <div 
               className="relative flex items-center rounded-[2rem] border transition-all duration-500 flex-wrap justify-center max-w-full"
-              style={{ gap: '8px', paddingLeft: '24px', paddingRight: '24px', paddingTop: '12px', paddingBottom: '12px' }}
               style={{
+                gap: '8px',
+                paddingLeft: '24px',
+                paddingRight: '24px',
+                paddingTop: '12px',
+                paddingBottom: '12px',
                 background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.1) 100%)',
                 borderColor: 'rgba(255, 255, 255, 0.2)',
                 boxShadow: `
