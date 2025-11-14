@@ -106,11 +106,7 @@ const PricingPage = () => {
             {pricingPackages.map((pkg) => (
               <div
                 key={pkg.name}
-                className={`relative rounded-2xl p-10 transition-all duration-500 hover:scale-105 ${
-                  pkg.featured
-                    ? 'bg-gradient-to-br from-black to-gray-900 text-white shadow-2xl border-2 border-gray-700 lg:scale-105'
-                    : 'bg-white text-gray-900 shadow-xl border border-gray-200 hover:shadow-2xl'
-                }`}
+                className="relative rounded-2xl p-10 transition-all duration-500 hover:scale-105 bg-white text-gray-900 shadow-xl border border-gray-200 hover:shadow-2xl"
               >
                 {pkg.featured && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
@@ -120,19 +116,19 @@ const PricingPage = () => {
                   </div>
                 )}
                 <div className="text-center mb-8">
-                  <h3 className={`text-2xl md:text-3xl font-bold mb-3 ${pkg.featured ? 'text-white' : 'text-black'}`} style={{ fontFamily: "'Playfair Display', serif" }}>
+                  <h3 className="text-2xl md:text-3xl font-bold mb-3 text-black" style={{ fontFamily: "'Playfair Display', serif" }}>
                     {pkg.name}
                   </h3>
-                  <p className={`text-sm mb-2 ${pkg.featured ? 'text-gray-300' : 'text-gray-500'}`}>
+                  <p className="text-sm mb-2 text-gray-500">
                     {pkg.duration}
                   </p>
                   <div className="mb-6">
-                    <span className={`text-5xl md:text-6xl font-bold ${pkg.featured ? 'text-white' : 'text-black'}`} style={{ fontFamily: "'Playfair Display', serif" }}>
+                    <span className="text-5xl md:text-6xl font-bold text-black" style={{ fontFamily: "'Playfair Display', serif" }}>
                       {pkg.price}
                     </span>
                   </div>
                   {pkg.description && (
-                    <p className={`text-sm mb-6 ${pkg.featured ? 'text-gray-300' : 'text-gray-600'} leading-relaxed`}>
+                    <p className="text-sm mb-6 text-gray-600 leading-relaxed">
                       {pkg.description}
                     </p>
                   )}
@@ -140,21 +136,17 @@ const PricingPage = () => {
                 <ul className="space-y-4 mb-10">
                   {pkg.features.map((feature, index) => (
                     <li key={index} className="flex items-start gap-3">
-                      <span className={`text-xl mt-1 flex-shrink-0 ${pkg.featured ? 'text-purple-400' : 'text-purple-600'}`}>
+                      <span className="text-xl mt-1 flex-shrink-0 text-purple-600">
                         <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                         </svg>
                       </span>
-                      <span className={`${pkg.featured ? 'text-gray-200' : 'text-gray-700'} leading-relaxed`}>{feature}</span>
+                      <span className="text-gray-700 leading-relaxed">{feature}</span>
                     </li>
                   ))}
                 </ul>
                 <button
-                  className={`w-full py-4 rounded-xl font-bold text-lg transition-all duration-300 ${
-                    pkg.featured
-                      ? 'bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white shadow-lg hover:shadow-xl'
-                      : 'bg-black hover:bg-gray-800 text-white shadow-md hover:shadow-lg'
-                  }`}
+                  className="w-full py-4 rounded-xl font-bold text-lg transition-all duration-300 bg-black hover:bg-gray-800 text-white shadow-md hover:shadow-lg"
                 >
                   Book Now
                 </button>
