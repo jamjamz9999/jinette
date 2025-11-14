@@ -1,5 +1,7 @@
 import React from 'react';
 
+import React from 'react';
+
 const PricingPage = () => {
   const pricingPackages = [
     {
@@ -39,6 +41,179 @@ const PricingPage = () => {
       ],
     },
   ];
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-purple-900 to-slate-900">
+      {/* Hero Section */}
+      <section className="py-24 px-8 bg-gradient-to-b from-slate-800 to-slate-900/50 backdrop-blur-sm">
+        <div className="max-w-6xl mx-auto text-center">
+          <p className="text-sm uppercase tracking-widest text-purple-300 mb-4 font-semibold">Investment</p>
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white" style={{ fontFamily: "'Playfair Display', serif" }}>
+            More Than a Photo Session — It's Your Legacy in Focus
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            At Jinette Ramos Photography, your investment goes far beyond beautiful images. It's about capturing the stories, emotions, and milestones that make your life uniquely yours.
+          </p>
+        </div>
+      </section>
+
+      {/* What's Included */}
+      <section className="py-20 px-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white" style={{ fontFamily: "'Playfair Display', serif" }}>
+              What's Included in Every Session
+            </h2>
+            <p className="text-lg text-gray-300 max-w-3xl mx-auto">
+              Every portrait experience includes:
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {[
+              'A pre-session consultation (phone or zoom) to plan your vision and styling',
+              'A relaxed, guided photoshoot in studio or on location',
+              'A private online gallery of professionally edited, high-resolution images',
+              'Print release + access to professional print and product options',
+            ].map((item, index) => (
+              <div key={index} className="bg-gradient-to-br from-purple-600/20 to-pink-600/20 backdrop-blur-sm p-6 rounded-2xl border border-purple-400/30 hover:border-purple-400/60 transition-all duration-300">
+                <div className="flex items-start gap-3">
+                  <span className="text-purple-400 text-xl mt-1 flex-shrink-0">
+                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                  </span>
+                  <p className="text-gray-200 leading-relaxed">{item}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Packages */}
+      <section className="py-20 px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white" style={{ fontFamily: "'Playfair Display', serif" }}>
+              Session Options
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20 items-start">
+            {pricingPackages.map((pkg) => (
+              <div
+                key={pkg.name}
+                className={`relative rounded-3xl overflow-hidden transition-all duration-500 hover:scale-105 backdrop-blur-sm border ${
+                  pkg.featured
+                    ? 'bg-gradient-to-br from-purple-600 via-pink-600 to-red-600 border-pink-400/60 shadow-2xl shadow-pink-500/50 lg:scale-105'
+                    : 'bg-gradient-to-br from-slate-700/50 to-slate-800/50 border-purple-400/30 shadow-xl hover:border-purple-400/60'
+                }`}
+              >
+                {/* Decorative shape - top right */}
+                <div className="absolute -top-10 -right-10 w-40 h-40 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full blur-3xl"></div>
+                
+                {pkg.featured && (
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+                    <span className="bg-gradient-to-r from-yellow-300 to-orange-300 text-slate-900 px-6 py-2 rounded-full text-sm font-bold shadow-lg">
+                      ✨ MOST POPULAR ✨
+                    </span>
+                  </div>
+                )}
+                
+                <div className="relative z-10 p-10">
+                  <div className="text-center mb-8">
+                    <h3 className={`text-2xl md:text-3xl font-bold mb-3 ${pkg.featured ? 'text-white' : 'text-white'}`} style={{ fontFamily: "'Playfair Display', serif" }}>
+                      {pkg.name}
+                    </h3>
+                    <p className={`text-sm mb-2 ${pkg.featured ? 'text-white/90' : 'text-gray-300'}`}>
+                      {pkg.duration}
+                    </p>
+                    <div className="mb-6">
+                      <span className={`text-5xl md:text-6xl font-bold ${pkg.featured ? 'text-white' : 'text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-pink-300'}`} style={{ fontFamily: "'Playfair Display', serif" }}>
+                        {pkg.price}
+                      </span>
+                    </div>
+                    {pkg.description && (
+                      <p className={`text-sm mb-6 ${pkg.featured ? 'text-white/95' : 'text-gray-300'} leading-relaxed`}>
+                        {pkg.description}
+                      </p>
+                    )}
+                  </div>
+                  <ul className="space-y-4 mb-10">
+                    {pkg.features.map((feature, index) => (
+                      <li key={index} className="flex items-start gap-3">
+                        <span className={`text-xl mt-1 flex-shrink-0 ${pkg.featured ? 'text-yellow-300' : 'text-purple-400'}`}>
+                          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                          </svg>
+                        </span>
+                        <span className={`${pkg.featured ? 'text-white/95' : 'text-gray-300'} leading-relaxed`}>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <button
+                    className={`w-full py-4 rounded-xl font-bold text-lg transition-all duration-300 transform hover:-translate-y-1 ${
+                      pkg.featured
+                        ? 'bg-gradient-to-r from-yellow-300 to-orange-300 hover:from-yellow-200 hover:to-orange-200 text-slate-900 shadow-lg hover:shadow-2xl shadow-yellow-500/50'
+                        : 'bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white shadow-md hover:shadow-lg'
+                    }`}
+                  >
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Add-Ons Section */}
+          <div className="bg-gradient-to-br from-slate-700/50 to-slate-800/50 backdrop-blur-sm rounded-3xl p-12 shadow-xl border border-purple-400/30">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white" style={{ fontFamily: "'Playfair Display', serif" }}>
+                Add-On Options
+              </h2>
+              <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+                Available with Any Package
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="flex items-start gap-5 p-6 rounded-2xl bg-gradient-to-br from-purple-600/10 to-pink-600/10 hover:from-purple-600/20 hover:to-pink-600/20 border border-purple-400/20 hover:border-purple-400/40 transition-all duration-300">
+                <div className="text-4xl flex-shrink-0">📸</div>
+                <div>
+                  <h3 className="font-bold text-xl mb-2 text-white">Additional images</h3>
+                  <p className="text-gray-300 leading-relaxed">$25 each</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-5 p-6 rounded-2xl bg-gradient-to-br from-purple-600/10 to-pink-600/10 hover:from-purple-600/20 hover:to-pink-600/20 border border-purple-400/20 hover:border-purple-400/40 transition-all duration-300">
+                <div className="text-4xl flex-shrink-0">🖼️</div>
+                <div>
+                  <h3 className="font-bold text-xl mb-2 text-white">Photo album</h3>
+                  <p className="text-gray-300 leading-relaxed">Starting at $350</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-5 p-6 rounded-2xl bg-gradient-to-br from-purple-600/10 to-pink-600/10 hover:from-purple-600/20 hover:to-pink-600/20 border border-purple-400/20 hover:border-purple-400/40 transition-all duration-300">
+                <div className="text-4xl flex-shrink-0">🖼️</div>
+                <div>
+                  <h3 className="font-bold text-xl mb-2 text-white">Canvas print</h3>
+                  <p className="text-gray-300 leading-relaxed">Starting at $175</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-5 p-6 rounded-2xl bg-gradient-to-br from-purple-600/10 to-pink-600/10 hover:from-purple-600/20 hover:to-pink-600/20 border border-purple-400/20 hover:border-purple-400/40 transition-all duration-300">
+                <div className="text-4xl flex-shrink-0">📍</div>
+                <div>
+                  <h3 className="font-bold text-xl mb-2 text-white">Travel outside Lehigh Valley</h3>
+                  <p className="text-gray-300 leading-relaxed">Custom quote</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default PricingPage;
+
+
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
