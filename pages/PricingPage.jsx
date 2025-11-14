@@ -102,7 +102,7 @@ const PricingPage = () => {
               Session Options
             </h2>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20 items-start">
             {pricingPackages.map((pkg) => (
               <div
                 key={pkg.name}
