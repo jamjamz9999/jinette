@@ -78,7 +78,7 @@ const Footer = ({ onAdminClick }) => {
             </div>
 
             {/* Center - Social Icons */}
-            <div className="flex justify-center gap-4 sm:gap-6">
+            <div className="flex justify-center gap-4 sm:gap-6 w-full">
               {[
                 { href: 'https://instagram.com', src: instagramIcon, alt: 'Instagram' },
                 { href: 'https://facebook.com', src: facebookIcon, alt: 'Facebook' },

@@ -230,6 +230,23 @@ const styles = `
     color: currentColor;
     opacity: 1 !important;
     font-size: 1.1rem;
+    position: relative;
+  }
+  
+  .nav-button::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: black;
+    transition: width 0.3s ease-in-out;
+  }
+  
+  .nav-button.active::after {
+    width: 100%;
   }
   
   .nav-button:hover {
