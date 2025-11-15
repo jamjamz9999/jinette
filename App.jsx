@@ -176,7 +176,7 @@ const styles = `
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('/images/header.png') center/cover no-repeat;
+    background: url('/jinette/images/header.png') center/cover no-repeat;
     background-size: 125%;
     /* only animate movement (no opacity changes) and increase speed */
     animation: moveBackgroundSmooth 25s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
@@ -285,13 +285,13 @@ const styles = `
   .split-image-left {
     width: calc(50% - 10px);
     height: 100%;
-    background: url('/images/JRP_0485.jpg') center/cover no-repeat;
+    background: url('/jinette/images/JRP_0485.jpg') center/cover no-repeat;
   }
 
   .split-image-right {
     width: calc(50% - 10px);
     height: 100%;
-    background: url('/images/JRP_0501.jpg') center/cover no-repeat;
+    background: url('/jinette/images/JRP_0501.jpg') center/cover no-repeat;
   }
 
   /* Gallery image breathing brightness animation */
